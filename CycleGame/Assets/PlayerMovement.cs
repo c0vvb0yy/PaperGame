@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float JumpForce = 2f;
     public float Speed = 5f;
+    public float JumpForce = 5f;
+    public float FallMultiplier = 2.5f;
+    public float LowJumpMultiplier = 2f;
+    private float FallSpeed;
 
     public Rigidbody Body;
+    public Mesh Mesh;
 
     public LayerMask WhatIsGround;
     public Transform GroundPoint;
     public bool IsGrounded;
 
-    private Vector2 MoveInput;
+    public bool FacingRight = true;
+    private bool JumpPressed;
+
+    public Vector2 MoveInput;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        JumpPressed |= Input.GetKeyDown(KeyCode.Space);
     }
 
     private void FixedUpdate() 
@@ -33,10 +40,23 @@ public class PlayerMovement : MonoBehaviour
         MoveInput.y = Input.GetAxisRaw("Vertical");
         MoveInput.Normalize();
 
-        Body.velocity = new Vector3(MoveInput.x, Body.velocity.y, MoveInput.y) * Speed;
+        Body.velocity = new Vector3(MoveInput.x, 0f, MoveInput.y) * Speed;
         
+        //Direction Check/Flip
+        if(Body.velocity.x < 0 && FacingRight)
+        {
+            FacingRight = false;
+            Flip();
+        }
+        if(Body.velocity.x > 0 && !FacingRight)
+        {
+            FacingRight = true;
+            Flip();
+        }
+
+        //Check For Ground
         RaycastHit hit;
-        if(Physics.Raycast(GroundPoint.position, Vector3.down, out hit, 2f, WhatIsGround))
+        if(Physics.Raycast(GroundPoint.position, Vector3.down, out hit, .5f, WhatIsGround))
         {
             IsGrounded = true;
         }
@@ -45,9 +65,58 @@ public class PlayerMovement : MonoBehaviour
             IsGrounded = false;
         }
         
-        if(Input.GetKeyDown(KeyCode.Space))
+        //All things Jumping
+        if(JumpPressed && IsGrounded)
         {
-            Body.velocity += new Vector3(0f, JumpForce, 0f);
+            FallSpeed = JumpForce;
         }
+        if(!IsGrounded || FallSpeed > 0)
+        {
+            float gravityMultiplier = 1f;
+            if(FallSpeed < 0)
+            {
+                gravityMultiplier = FallMultiplier;
+            }
+            else if(Body.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+            {
+                gravityMultiplier = LowJumpMultiplier;
+            }
+            FallSpeed += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
+            Body.velocity += new Vector3(0f, FallSpeed, 0f);
+        }
+        else
+        {
+            FallSpeed = 0f;
+        }
+        JumpPressed = false;
+    }
+
+    public void Flip()
+    {
+        Vector3[] vertices = Mesh.vertices;
+        for(int i = 0; i< vertices.Length; i++)
+        {
+            Vector3 current = vertices[i];
+            current.y *= -1;
+            vertices[i] = current;
+        }
+
+        Mesh.vertices = vertices;
+        FlipNormals();
+    }
+
+    public void FlipNormals()
+    {
+        int[] triangles = Mesh.triangles;
+        for(int i = 0; i < triangles.Length / 3; i++)
+        {
+            int a = triangles[i * 3 + 0];
+            int b = triangles[i * 3 + 1];
+            int c = triangles[i * 3 + 2];
+            triangles[i * 3 + 0] = c;
+            triangles[i * 3 + 1] = b;
+            triangles[i * 3 + 2] = a;
+        }
+        Mesh.triangles = triangles;
     }
 }
