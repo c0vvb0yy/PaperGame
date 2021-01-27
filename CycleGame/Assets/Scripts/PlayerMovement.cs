@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float FallSpeed;
 
     public Rigidbody Body;
-    public Mesh Mesh;
+    public Transform Visuals;
 
     public LayerMask WhatIsGround;
     public Transform GroundPoint;
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         JumpPressed |= Input.GetKeyDown(KeyCode.Space);
+        Flip();
     }
 
     private void FixedUpdate() 
@@ -46,12 +47,10 @@ public class PlayerMovement : MonoBehaviour
         if(Body.velocity.x < 0 && FacingRight)
         {
             FacingRight = false;
-            Flip();
         }
         if(Body.velocity.x > 0 && !FacingRight)
         {
             FacingRight = true;
-            Flip();
         }
 
         //Check For Ground
@@ -93,30 +92,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Flip()
     {
-        Vector3[] vertices = Mesh.vertices;
-        for(int i = 0; i< vertices.Length; i++)
-        {
-            Vector3 current = vertices[i];
-            current.y *= -1;
-            vertices[i] = current;
-        }
-
-        Mesh.vertices = vertices;
-        FlipNormals();
-    }
-
-    public void FlipNormals()
-    {
-        int[] triangles = Mesh.triangles;
-        for(int i = 0; i < triangles.Length / 3; i++)
-        {
-            int a = triangles[i * 3 + 0];
-            int b = triangles[i * 3 + 1];
-            int c = triangles[i * 3 + 2];
-            triangles[i * 3 + 0] = c;
-            triangles[i * 3 + 1] = b;
-            triangles[i * 3 + 2] = a;
-        }
-        Mesh.triangles = triangles;
+        Vector3 rotation = Visuals.eulerAngles;
+        rotation.y = Mathf.MoveTowards(rotation.y, FacingRight ? 0 : 180, 360 * Time.deltaTime); 
+        Visuals.eulerAngles = rotation;
     }
 }
