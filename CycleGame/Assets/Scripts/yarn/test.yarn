@@ -1,0 +1,29 @@
+title: DialogueTest
+tags: 
+colorID: 0
+position: -655,310
+---
+Arrow: How can I talk without a mouth?
+Arrow: Without Vocal chords??
+[[Acknowledge the situation |Acknowledge]]
+[[Remain blissfully ignorant|Ignorance]]
+===
+title: Acknowledge
+tags: 
+colorID: 0
+position: -434,-19
+---
+Zaavan: ...Damn,
+<<close>>
+<<wait 1>>
+Zaavan: Sure is fucked up.
+===
+title: Ignorance
+tags: 
+colorID: 0
+position: 40,7
+---
+Zaavan: ...
+<<AwkwardLeave Player>>
+<<stop>>
+===

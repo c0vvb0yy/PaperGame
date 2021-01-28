@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody Body;
     public Transform Visuals;
+    public Transform Step;
 
     public LayerMask WhatIsGround;
     public Transform GroundPoint;
@@ -96,4 +98,18 @@ public class PlayerMovement : MonoBehaviour
         rotation.y = Mathf.MoveTowards(rotation.y, FacingRight ? 0 : 180, 360 * Time.deltaTime); 
         Visuals.eulerAngles = rotation;
     }
+
+    [YarnCommand("AwkwardLeave")]
+    public void AwkwardLeave()
+    {
+        if(FacingRight && Step.position.x > 0 || !FacingRight && Step.position.x < 0)
+        {
+            
+            var step = Step.position;
+            step.x = -step.x;
+            Step.position = step;
+        }
+        this.transform.position = Vector3.MoveTowards(this.transform.position, Step.position, 1f);
+    }
+
 }
