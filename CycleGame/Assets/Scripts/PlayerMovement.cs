@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool FacingRight = true;
     public bool FacingFront = true;
+    public bool WalkedBack;
     private bool JumpPressed;
 
     public Vector2 MoveInput;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public Animation FrontAnim;
     public Animation FrontWalk;
     public Animation BackAnim;
+    public Animation BackWalk;
     public SpriteAnimation Animator;
 
     // Start is called before the first frame update
@@ -62,27 +64,34 @@ public class PlayerMovement : MonoBehaviour
             FacingRight = true;
         }
 
-        if(MoveInput.x == 0 && MoveInput.y == 0 && IsWalking || !FacingFront)
+        DetermineAnimations();
+        /*if(MoveInput.x == 0 && MoveInput.y == 0 && ( IsWalking || FacingFront))
+        {
+            Animator.Animation = BackAnim;
+            Animator.AnimationReset();
+            FacingFront = false;
+        } 
+        if(MoveInput.x == 0 && MoveInput.y == 0 && ( IsWalking || !FacingFront))
         {
             Animator.Animation = FrontAnim;
             Animator.AnimationReset();
             FacingFront = true;
             IsWalking = false;
         }
-
-        if(Body.velocity.z > 0 && FacingFront)
-        {
-            Animator.Animation = BackAnim;
-            Animator.AnimationReset();
-            FacingFront = false;
-        } 
         if(MoveInput.x != 0 && !IsWalking)
         {
             if(MoveInput.y <= 0 )
             {
                 Animator.Animation = FrontWalk;
                 Animator.AnimationReset();
-            }           // FacingFront = true;
+                FacingFront = true;
+            }
+            else
+            {
+                Animator.Animation = BackWalk;
+                Animator.AnimationReset();
+                FacingFront = false;
+            }
             
             IsWalking = true;
         }
@@ -92,6 +101,13 @@ public class PlayerMovement : MonoBehaviour
             Animator.AnimationReset();
             IsWalking = true;
         }
+        if(MoveInput.y > 0 && !IsWalking)
+        {
+            Animator.Animation = BackWalk;
+            Animator.AnimationReset();
+            //Debug.Log("Reset");
+            IsWalking = true;
+        }*/
 
         //Check For Ground
         RaycastHit hit;
@@ -150,4 +166,63 @@ public class PlayerMovement : MonoBehaviour
         this.transform.position = Vector3.MoveTowards(this.transform.position, Step.position, 1f);
     }
 
+    private void DetermineAnimations()
+    {
+        if(MoveInput.x == 0 && MoveInput.y == 0)
+        {
+            if(WalkedBack)
+            {
+                Animator.Animation = BackAnim;
+                Animator.AnimationReset();
+                FacingFront = false;
+            }
+            else
+            {
+                Animator.Animation = FrontAnim;
+                Animator.AnimationReset();
+                FacingFront = true;
+            }
+            return;
+        }
+        bool walkingHorizontal = false;
+        bool walkingBack = false;
+        if(MoveInput.x != 0)
+        {
+            walkingHorizontal = true;
+        }
+        if(MoveInput.y > 0)
+        {
+            walkingBack = true;
+            WalkedBack = true;
+        }
+        if(MoveInput.y < 0)
+        {
+            walkingBack = false;
+            WalkedBack = false;
+        }
+        if(walkingBack) //for y back
+        {
+            Animator.Animation = BackWalk;
+            //Animator.AnimationReset();
+            FacingFront = false;
+        }
+        else //for y forward
+        {
+            Animator.Animation = FrontWalk;
+            //Animator.AnimationReset();
+            FacingFront = true;
+        }
+        if(walkingHorizontal && WalkedBack) //just x input but previously has walked back
+        {
+            Animator.Animation = BackWalk;
+            //Animator.AnimationReset();
+            FacingFront = false;
+        }
+        else if(walkingHorizontal && !WalkedBack) //just x input but previously has walked forward
+        {
+            Animator.Animation = FrontWalk;
+            //Animator.AnimationReset();
+            FacingFront = true;
+        }
+    }
 }

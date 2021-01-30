@@ -1,0 +1,333 @@
+fileFormatVersion: 2
+guid: 87fc6131de29d2c49b157c9a9a644f24
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6887133548991615267
+    second: skeleton_backward_walk_sheet_0
+  - first:
+      213: 1819725951921666767
+    second: skeleton_backward_walk_sheet_1
+  - first:
+      213: -6741490901136821628
+    second: skeleton_backward_walk_sheet_2
+  - first:
+      213: -185286647362919362
+    second: skeleton_backward_walk_sheet_3
+  - first:
+      213: -6308656877220998649
+    second: skeleton_backward_walk_sheet_4
+  - first:
+      213: 1215645208292342379
+    second: skeleton_backward_walk_sheet_5
+  - first:
+      213: 214929368097133989
+    second: skeleton_backward_walk_sheet_4
+  - first:
+      213: 1322516521852953665
+    second: skeleton_backward_walk_sheet_5
+  - first:
+      213: 7037519430252208320
+    second: skeleton_backward_walk_sheet_6
+  - first:
+      213: 4140048741682807417
+    second: skeleton_backward_walk_sheet_7
+  - first:
+      213: 8128789992861994881
+    second: skeleton_backward_walk_sheet_10
+  - first:
+      213: 3243729742754503330
+    second: skeleton_backward_walk_sheet_12
+  - first:
+      213: 8550995719103208265
+    second: skeleton_backward_walk_sheet_13
+  - first:
+      213: -6341215913023831278
+    second: skeleton_backward_walk_sheet_14
+  - first:
+      213: 5693434296562278116
+    second: skeleton_backward_walk_sheet_15
+  - first:
+      213: -4474820903914070497
+    second: skeleton_backward_walk_sheet_16
+  - first:
+      213: 6465649508330556857
+    second: skeleton_backward_walk_sheet_17
+  - first:
+      213: -5628691781240124044
+    second: skeleton_backward_walk_sheet_18
+  - first:
+      213: -8890137894211641310
+    second: skeleton_backward_walk_sheet_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 2427
+        width: 671
+        height: 1830
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddeedabd68cfb60a0800000000000000
+      internalID: -6887133548991615267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 2384
+        width: 810
+        height: 1867
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcab9d8ac17f04910800000000000000
+      internalID: 1819725951921666767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 2391
+        width: 916
+        height: 1838
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482363d4eb96172a0800000000000000
+      internalID: -6741490901136821628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2734
+        y: 2439
+        width: 746
+        height: 1792
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e346f42a6cabd6df0800000000000000
+      internalID: -185286647362919362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 362
+        width: 586
+        height: 1807
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a59a3d1f159bf200800000000000000
+      internalID: 214929368097133989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 279
+        width: 653
+        height: 1860
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14461a605c58a5210800000000000000
+      internalID: 1322516521852953665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 316
+        width: 702
+        height: 1844
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c0a71ca2aa4aa160800000000000000
+      internalID: 7037519430252208320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_backward_walk_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 241
+        width: 657
+        height: 1801
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9728ec84568647930800000000000000
+      internalID: 4140048741682807417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 6fa61e69585aac74fb9e8a77fdefc20a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
