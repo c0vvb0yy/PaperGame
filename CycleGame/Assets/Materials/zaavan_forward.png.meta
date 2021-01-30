@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: 40c8ffea284e7f44dbfacc6d814f9273
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1137018707832955268
+    second: zaavan_forward_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -89,7 +92,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: zaavan_forward_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1410
+        width: 714
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4816b579d7087cf00800000000000000
+      internalID: 1137018707832955268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

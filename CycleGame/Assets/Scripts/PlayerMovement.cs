@@ -20,9 +20,14 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded;
 
     public bool FacingRight = true;
+    public bool FacingFront = true;
     private bool JumpPressed;
 
     public Vector2 MoveInput;
+
+    public Animation FrontAnim;
+    public Animation BackAnim;
+    public SpriteAnimation Animator;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +58,19 @@ public class PlayerMovement : MonoBehaviour
         if(Body.velocity.x > 0 && !FacingRight)
         {
             FacingRight = true;
+        }
+
+        if(Body.velocity.z > 0 && FacingFront)
+        {
+            Animator.Animation = BackAnim;
+            Animator.AnimationReset();
+            FacingFront = false;
+        }
+        if(Body.velocity.z < 0 && !FacingFront)
+        {
+            Animator.Animation = FrontAnim;
+            Animator.AnimationReset();
+            FacingFront = true;
         }
 
         //Check For Ground

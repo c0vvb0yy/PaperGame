@@ -11,6 +11,7 @@ Shader "Tutorial/006_Basic_Transparency"{
 		ZWrite off
         Cull off
 
+
 		Pass{
 			CGPROGRAM
 
@@ -18,18 +19,25 @@ Shader "Tutorial/006_Basic_Transparency"{
 
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma multi_compile_instancing
+
+			UNITY_INSTANCING_BUFFER_START(Props)
+
+			UNITY_DEFINE_INSTANCED_PROP(float4, _MainTex_ST)
+			UNITY_DEFINE_INSTANCED_PROP(float4, _Color)
+
+			UNITY_INSTANCING_BUFFER_END(Props)
 
 			sampler2D _MainTex;
-			float4 _MainTex_ST;
-
-			fixed4 _Color;
 
 			struct appdata{
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
 			};
 
 			struct v2f{
+				UNITY_VERTEX_INPUT_INSTANCE_ID
 				float4 position : SV_POSITION;
 				float2 uv : TEXCOORD0;
 			};
@@ -37,13 +45,17 @@ Shader "Tutorial/006_Basic_Transparency"{
 			v2f vert(appdata v){
 				v2f o;
 				o.position = UnityObjectToClipPos(v.vertex);
-				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				float4 scaleTrans = UNITY_ACCESS_INSTANCED_PROP(Props, _MainTex_ST);
+				o.uv = v.uv * scaleTrans.xy + scaleTrans.zw;
+				UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_TRANSFER_INSTANCE_ID(v, o);
 				return o;
 			}
 
 			fixed4 frag(v2f i) : SV_TARGET{
+				UNITY_SETUP_INSTANCE_ID(i);
 				fixed4 col = tex2D(_MainTex, i.uv);
-				col *= _Color;
+				col *=  UNITY_ACCESS_INSTANCED_PROP(Props, _Color);
 				return col;
 			}
 

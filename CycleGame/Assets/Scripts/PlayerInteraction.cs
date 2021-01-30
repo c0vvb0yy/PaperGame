@@ -38,8 +38,8 @@ public class PlayerInteraction : MonoBehaviour
         if(other.CompareTag("NPC"))
         {
             NearNPC = true;
-            DialogueRunner = other.gameObject.GetComponent<DialogueRunner>();
-            DialogueUI = other.gameObject.GetComponent<DialogueUI>();
+            DialogueRunner = other.gameObject.GetComponentInChildren<DialogueRunner>();
+            DialogueUI = other.gameObject.GetComponentInChildren<DialogueUI>();
         }
     }
 
@@ -50,6 +50,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             NearNPC = false;
             DialogueRunner = null; //maybe a check to see which dialogue exactly in case of two overlapping npc colliders?
+            DialogueUI = null;
         }
     }
 
