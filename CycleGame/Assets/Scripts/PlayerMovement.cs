@@ -24,8 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private bool JumpPressed;
 
     public Vector2 MoveInput;
+    public bool IsWalking;
 
     public Animation FrontAnim;
+    public Animation FrontWalk;
     public Animation BackAnim;
     public SpriteAnimation Animator;
 
@@ -60,17 +62,35 @@ public class PlayerMovement : MonoBehaviour
             FacingRight = true;
         }
 
+        if(MoveInput.x == 0 && MoveInput.y == 0 && IsWalking || !FacingFront)
+        {
+            Animator.Animation = FrontAnim;
+            Animator.AnimationReset();
+            FacingFront = true;
+            IsWalking = false;
+        }
+
         if(Body.velocity.z > 0 && FacingFront)
         {
             Animator.Animation = BackAnim;
             Animator.AnimationReset();
             FacingFront = false;
-        }
-        if(Body.velocity.z < 0 && !FacingFront)
+        } 
+        if(MoveInput.x != 0 && !IsWalking)
         {
-            Animator.Animation = FrontAnim;
+            if(MoveInput.y <= 0 )
+            {
+                Animator.Animation = FrontWalk;
+                Animator.AnimationReset();
+            }           // FacingFront = true;
+            
+            IsWalking = true;
+        }
+        else if(MoveInput.y < 0 && !IsWalking)
+        {
+            Animator.Animation = FrontWalk;
             Animator.AnimationReset();
-            FacingFront = true;
+            IsWalking = true;
         }
 
         //Check For Ground
