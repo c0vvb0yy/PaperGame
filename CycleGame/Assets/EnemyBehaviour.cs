@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public float MoveSpeed = 7f;
+    public float MoveSpeed = 70f;
     public bool SeesPlayer;
     public Transform Player;
     public Rigidbody Body;
 
     private Vector3 Home;
+    public Vector3 PlayerDirection;
     public float MaxDist;
 
     // Start is called before the first frame update
@@ -19,20 +20,21 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(SeesPlayer)
         {
-            transform.LookAt(Player);
-            Body.velocity += transform.forward * MoveSpeed * Time.deltaTime;
+            PlayerDirection = (Player.position - this.transform.position).normalized;
+            //Body.AddRelativeForce(PlayerDirection.normalized * MoveSpeed, ForceMode.Force);
+            Body.velocity = PlayerDirection * MoveSpeed * Time.deltaTime;
         }
         else
         {
             float dist = Vector3.Distance(transform.position, Home);
             if(dist > MaxDist)
             {
-                transform.LookAt(Home);
-                Body.velocity += transform.forward * MoveSpeed * Time.deltaTime;
+                Vector3 homeDriection = (Home - this.transform.position).normalized;
+                Body.velocity = homeDriection * MoveSpeed * Time.deltaTime;
             }
         }
     }

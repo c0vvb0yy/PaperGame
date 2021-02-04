@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - SpeakerBox
+  - DialogueBox
   layers:
   - Default
   - TransparentFX
@@ -41,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Darkener_Dialogue
+    uniqueID: 1611486351
+    locked: 0
+  - name: Highlighted_Dialogue
+    uniqueID: 1220540253
     locked: 0

@@ -64,51 +64,6 @@ public class PlayerMovement : MonoBehaviour
             FacingRight = true;
         }
 
-        DetermineAnimations();
-        /*if(MoveInput.x == 0 && MoveInput.y == 0 && ( IsWalking || FacingFront))
-        {
-            Animator.Animation = BackAnim;
-            Animator.AnimationReset();
-            FacingFront = false;
-        } 
-        if(MoveInput.x == 0 && MoveInput.y == 0 && ( IsWalking || !FacingFront))
-        {
-            Animator.Animation = FrontAnim;
-            Animator.AnimationReset();
-            FacingFront = true;
-            IsWalking = false;
-        }
-        if(MoveInput.x != 0 && !IsWalking)
-        {
-            if(MoveInput.y <= 0 )
-            {
-                Animator.Animation = FrontWalk;
-                Animator.AnimationReset();
-                FacingFront = true;
-            }
-            else
-            {
-                Animator.Animation = BackWalk;
-                Animator.AnimationReset();
-                FacingFront = false;
-            }
-            
-            IsWalking = true;
-        }
-        else if(MoveInput.y < 0 && !IsWalking)
-        {
-            Animator.Animation = FrontWalk;
-            Animator.AnimationReset();
-            IsWalking = true;
-        }
-        if(MoveInput.y > 0 && !IsWalking)
-        {
-            Animator.Animation = BackWalk;
-            Animator.AnimationReset();
-            //Debug.Log("Reset");
-            IsWalking = true;
-        }*/
-
         //Check For Ground
         RaycastHit hit;
         if(Physics.Raycast(GroundPoint.position, Vector3.down, out hit, .5f, WhatIsGround))
@@ -119,6 +74,9 @@ public class PlayerMovement : MonoBehaviour
         {
             IsGrounded = false;
         }
+
+        
+        DetermineAnimations();
         
         //All things Jumping
         if(JumpPressed && IsGrounded)
@@ -168,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetermineAnimations()
     {
-        if(MoveInput.x == 0 && MoveInput.y == 0)
+        if((MoveInput.x == 0 && MoveInput.y == 0) ||!IsGrounded)
         {
             if(WalkedBack)
             {

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Front
   m_EditorClassIdentifier: 
   KeyFrames:
-  - Duration: 1
+  - Duration: 0.000000001
     Sprite: {fileID: 21300000, guid: 40c8ffea284e7f44dbfacc6d814f9273, type: 3}

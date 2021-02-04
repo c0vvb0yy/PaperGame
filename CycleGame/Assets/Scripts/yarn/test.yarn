@@ -3,33 +3,27 @@ tags:
 colorID: 0
 position: -655,310
 ---
-Arrow: How can I talk without a mouth?
-Arrow: Without Vocal chords??
-[[Acknowledge the situation |Acknowledge]]
-[[Remain blissfully ignorant|Ignorance]]
+Anthrazit: I don't wanna think up any new test dialogue
+Anthrazit: I hope that's alright?
+[[Be understanding |Acknowledge]]
+[[Or dont I guess |Ignorance]]
 ===
 title: Acknowledge
 tags: 
 colorID: 0
 position: -434,-19
 ---
-Zaavan: ...Damn,
+Zaavan: of course it is
 <<close>>
 <<wait 1>>
-Zaavan: Sure is fucked up.
+Zaavan: ily😍
 ===
 title: Ignorance
 tags: 
 colorID: 0
 position: 40,7
 ---
-Zaavan: ...
+Zaavan: ... yikes.
 <<AwkwardLeave Player>>
 <<stop>>
-===
-title: Schild
-tags: 
-position: -156,280
----
-I'm just a sign
 ===
