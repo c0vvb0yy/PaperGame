@@ -1,0 +1,318 @@
+fileFormatVersion: 2
+guid: b96e4c4c714bb94438f4273a2463438a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4029810373867860667
+    second: skeleton_ANTHRA_forward_walk_sheet_0
+  - first:
+      213: -353021093860317494
+    second: skeleton_ANTHRA_forward_walk_sheet_0
+  - first:
+      213: 6795351483768077145
+    second: skeleton_ANTHRA_forward_walk_sheet_1
+  - first:
+      213: 5487174599744421328
+    second: skeleton_ANTHRA_forward_walk_sheet_3
+  - first:
+      213: 2907544100317924332
+    second: skeleton_ANTHRA_forward_walk_sheet_2
+  - first:
+      213: -6919759260910922855
+    second: skeleton_ANTHRA_forward_walk_sheet_10
+  - first:
+      213: 2233457537605739762
+    second: skeleton_ANTHRA_forward_walk_sheet_5
+  - first:
+      213: 2399002906547409771
+    second: skeleton_ANTHRA_forward_walk_sheet_12
+  - first:
+      213: -768243971153353385
+    second: skeleton_ANTHRA_forward_walk_sheet_4
+  - first:
+      213: 3588776165988438005
+    second: skeleton_ANTHRA_forward_walk_sheet_14
+  - first:
+      213: -8251016047033586624
+    second: skeleton_ANTHRA_forward_walk_sheet_6
+  - first:
+      213: -3911568964346897784
+    second: skeleton_ANTHRA_forward_walk_sheet_7
+  - first:
+      213: -8946677784541357564
+    second: skeleton_ANTHRA_forward_walk_sheet_17
+  - first:
+      213: 5818152075006275323
+    second: skeleton_ANTHRA_forward_walk_sheet_18
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 2356
+        width: 535
+        height: 1772
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac66c3e7f21d91bf0800000000000000
+      internalID: -353021093860317494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 2323
+        width: 889
+        height: 1786
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b7be1db20fd4e50800000000000000
+      internalID: 6795351483768077145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2657
+        y: 2382
+        width: 809
+        height: 1731
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ddff46e93c562c40800000000000000
+      internalID: 5487174599744421328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1638
+        y: 2338
+        width: 956
+        height: 1734
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb8b3454fba95820800000000000000
+      internalID: 2907544100317924332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 476
+        width: 778
+        height: 1811
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f4a8ed0cc5defe10800000000000000
+      internalID: 2233457537605739762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 465
+        width: 577
+        height: 1755
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755a196bd26a655f0800000000000000
+      internalID: -768243971153353385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1748
+        y: 467
+        width: 943
+        height: 1749
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ce388fe908e7d80800000000000000
+      internalID: -8251016047033586624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_forward_walk_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 272
+        width: 571
+        height: 1738
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a19a550c057b9c0800000000000000
+      internalID: -3911568964346897784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

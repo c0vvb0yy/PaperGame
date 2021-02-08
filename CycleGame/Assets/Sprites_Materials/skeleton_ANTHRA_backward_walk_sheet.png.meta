@@ -1,0 +1,324 @@
+fileFormatVersion: 2
+guid: 8799aa9d44a7afc45b4a54d0dc533f58
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8255566450803198358
+    second: skeleton_ANTHRA_backward_walk_sheet_0
+  - first:
+      213: -1140488942982660380
+    second: skeleton_ANTHRA_backward_walk_sheet_1
+  - first:
+      213: 4984152612002942417
+    second: skeleton_ANTHRA_backward_walk_sheet_2
+  - first:
+      213: 36569980154567608
+    second: skeleton_ANTHRA_backward_walk_sheet_3
+  - first:
+      213: 1904571834163409850
+    second: skeleton_ANTHRA_backward_walk_sheet_5
+  - first:
+      213: 8685769926440100917
+    second: skeleton_ANTHRA_backward_walk_sheet_4
+  - first:
+      213: 1844865536913562025
+    second: skeleton_ANTHRA_backward_walk_sheet_5
+  - first:
+      213: -586088268149240372
+    second: skeleton_ANTHRA_backward_walk_sheet_6
+  - first:
+      213: 6658485994227272401
+    second: skeleton_ANTHRA_backward_walk_sheet_7
+  - first:
+      213: 1610323281814773422
+    second: skeleton_ANTHRA_backward_walk_sheet_10
+  - first:
+      213: 6757532098898056793
+    second: skeleton_ANTHRA_backward_walk_sheet_11
+  - first:
+      213: -8900547639546248992
+    second: skeleton_ANTHRA_backward_walk_sheet_12
+  - first:
+      213: 732595483167682931
+    second: skeleton_ANTHRA_backward_walk_sheet_14
+  - first:
+      213: -6316324186765681147
+    second: skeleton_ANTHRA_backward_walk_sheet_15
+  - first:
+      213: 8602115424469531171
+    second: skeleton_ANTHRA_backward_walk_sheet_16
+  - first:
+      213: 4391417732489912389
+    second: skeleton_ANTHRA_backward_walk_sheet_17
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 2414
+        width: 671
+        height: 1740
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699c1c772f9a19270800000000000000
+      internalID: 8255566450803198358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 2373
+        width: 810
+        height: 1775
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eef143595b2c20f0800000000000000
+      internalID: -1140488942982660380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1703
+        y: 2381
+        width: 916
+        height: 1745
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd45c8b4644b2540800000000000000
+      internalID: 4984152612002942417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2734
+        y: 2426
+        width: 746
+        height: 1702
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb5e84043ce18000800000000000000
+      internalID: 36569980154567608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 403
+        width: 586
+        height: 1718
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 534ab3a9abd0a8870800000000000000
+      internalID: 8685769926440100917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 326
+        width: 679
+        height: 1765
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a9d71a6e674a9910800000000000000
+      internalID: 1844865536913562025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1782
+        y: 360
+        width: 702
+        height: 1753
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccdc0f943dbcdd7f0800000000000000
+      internalID: -586088268149240372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skeleton_ANTHRA_backward_walk_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 289
+        width: 657
+        height: 1710
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da84dbcbb1b76c50800000000000000
+      internalID: 6658485994227272401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

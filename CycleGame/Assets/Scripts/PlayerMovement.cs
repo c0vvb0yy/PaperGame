@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput;
     public bool IsWalking;
+    public Vector3 LastPos;
+    public Vector3 DeltaPosition;
 
     public Animation FrontAnim;
     public Animation FrontWalk;
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        LastPos = this.transform.position;
     }
 
     // Update is called once per frame
@@ -53,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
         MoveInput.Normalize();
 
         Body.velocity = new Vector3(MoveInput.x, 0f, MoveInput.y) * Speed;
+
+        DeltaPosition = this.transform.position - LastPos;
+        LastPos = this.transform.position;
         
         //Direction Check/Flip
         if(Body.velocity.x < 0 && FacingRight)
