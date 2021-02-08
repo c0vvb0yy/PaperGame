@@ -35,17 +35,20 @@ public class PlayerMovement : MonoBehaviour
     public Animation BackWalk;
     public SpriteAnimation Animator;
 
+    private Flip flip;
+
     // Start is called before the first frame update
     void Start()
     {
         LastPos = this.transform.position;
+        flip = GetComponent<Flip>();
     }
 
     // Update is called once per frame
     void Update()
     {
         JumpPressed |= Input.GetKeyDown(KeyCode.Space);
-        Flip();
+        flip.FlipSprite(FacingRight, FacingFront);
     }
 
     private void FixedUpdate() 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +9,6 @@ public class FollowPlayer : MonoBehaviour
 
     public Rigidbody Target;
     public NavMeshAgent Body;
-    public Transform Visuals; 
 
     public bool FacingRight = true;
     public bool FacingFront = true;
@@ -20,26 +20,22 @@ public class FollowPlayer : MonoBehaviour
     public Animation BackWalk;
     public SpriteAnimation Animator;
 
+    private Flip flip;
 
     // Start is called before the first frame update
     void Start()
     {
+        flip = GetComponent<Flip>();
     }
 
     void Update()
     {
         Body.SetDestination(Target.position);
-        Flip();
 
         DetermineDirection();
         DetermineAnimation();
-    }
 
-    public void Flip()
-    {
-        Vector3 rotation = Visuals.eulerAngles;
-        rotation.y = Mathf.MoveTowards(rotation.y, FacingRight ? 0 : 180, 360 * Time.deltaTime); 
-        Visuals.eulerAngles = rotation;
+        flip?.FlipSprite(FacingRight, FacingFront);
     }
 
     public void DetermineDirection()
