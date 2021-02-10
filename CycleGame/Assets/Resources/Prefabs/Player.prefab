@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4267052143488672823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 9.34, z: 0}
   m_LocalScale: {x: 6.471299, y: 18, z: 1}
   m_Children: []
   m_Father: {fileID: 4267052144571032551}
@@ -246,7 +246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4267052144542830018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.41, z: 0}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4267052144571032551}
@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 4267052144571032549}
   - component: {fileID: 4267052144571032550}
   - component: {fileID: 4267052144571032545}
+  - component: {fileID: 2037495693}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -335,6 +336,8 @@ MonoBehaviour:
   WalkedBack: 0
   MoveInput: {x: 0, y: 0}
   IsWalking: 0
+  LastPos: {x: 0, y: 0, z: 0}
+  DeltaPosition: {x: 0, y: 0, z: 0}
   FrontAnim: {fileID: 11400000, guid: e7f92160e2caed14fbfa0069355aad77, type: 2}
   FrontWalk: {fileID: 11400000, guid: 50041583c0485784490005764d8bf80c, type: 2}
   BackAnim: {fileID: 11400000, guid: b9e3ca08d1c21754f87dfd515727654c, type: 2}
@@ -352,7 +355,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 7, y: 17.47, z: 1.42}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 9.56, z: 0}
 --- !u!114 &4267052144571032545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,3 +370,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NearNPC: 0
   isTalking: 0
+--- !u!114 &2037495693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267052144571032554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38322eb9ef0337409fa0b1a1676a08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Visuals:
+  - {fileID: 4267052143488672822}
+  xVisuals: []
+  zVisuals: []

@@ -3,30 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Yarn.Unity;
 
 public class SpeakerPortrait : MonoBehaviour
 {
-    public Image Portrait;
-    public TextMeshProUGUI Name;
+    public Image LeftPortrait;
+    public Image RightPortrait;
+    public RectTransform SpeakerContainer;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    public void UpdateSpeakerPortrait()
+    [YarnCommand("SetLeftSpeaker")]
+    public void UpdateSpeakerPortraitL(string speaker)
     {
-        var speaker = Name.text;
-        if(speaker == "Zaavan")
+        var portrait = Resources.Load<Sprite>("Talk_Sprites/"+speaker+"_talk");
+        LeftPortrait.sprite = portrait;
+        
+    }
+
+    [YarnCommand("SetRightSpeaker")]
+    public void UpdateSpeakerPortraitR(string speaker)
+    {
+        var portrait = Resources.Load<Sprite>("Talk_Sprites/"+speaker+"_talk");
+        RightPortrait.sprite = portrait;
+    }
+
+    [YarnCommand("Darken")]
+    public void DarkenPortrait(string side)
+    {
+        Color darkened = new Color(.25f, .25f, .25f);
+        Color normal = new Color(1, 1, 1);
+        var pos = SpeakerContainer.position;
+        switch (side)
         {
-            var portrait = (Sprite) Resources.Load<Sprite>("Talk_Sprites/Zaavan_talk");
-            Debug.Log(portrait.name);
-            Portrait.sprite = portrait;
-        }
-        if(speaker == "Anthrazit")
-        {
-            var portrait = Resources.Load<Sprite>("Talk_Sprites/Anthrazit_talk");
-            Portrait.sprite = portrait;
+            case "left":
+                LeftPortrait.color = darkened;
+                RightPortrait.color = normal;
+                pos.x = 1700;
+                SpeakerContainer.position = pos;
+                Debug.Log("Darnkekned");
+            break;
+            default:
+                LeftPortrait.color = normal;
+                RightPortrait.color = darkened;
+                pos.x = 216;
+                SpeakerContainer.position = pos;
+                Debug.Log("darkend");
+            break;
         }
     }
 }

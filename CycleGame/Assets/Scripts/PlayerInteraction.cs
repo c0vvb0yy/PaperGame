@@ -6,7 +6,6 @@ using Yarn.Unity;
 public class PlayerInteraction : MonoBehaviour
 {
     public bool NearNPC;
-    public bool isTalking;
     DialogueRunner DialogueRunner;
     DialogueUI DialogueUI;
     // Start is called before the first frame update
@@ -18,7 +17,7 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isTalking)
+        if(PlayerManager.IsTalking)
         {
             if(Input.GetKeyDown(KeyCode.C))
             {
@@ -26,10 +25,18 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
         
-        if(NearNPC && Input.GetKeyDown(KeyCode.C) && !isTalking)
+        if(Input.GetKeyDown(KeyCode.C) && !PlayerManager.IsTalking)
         {
-            DialogueRunner.StartDialogue();
-            isTalking = true;
+            if(NearNPC)
+            {
+                DialogueRunner.StartDialogue();
+            }
+            else
+            {
+                DialogueRunner = GameObject.FindGameObjectWithTag("Anthra").GetComponentInChildren<DialogueRunner>();
+                DialogueUI = GameObject.FindGameObjectWithTag("Anthra").GetComponentInChildren<DialogueUI>();
+                DialogueRunner.StartDialogue();
+            }
         }
     }
 
@@ -52,10 +59,5 @@ public class PlayerInteraction : MonoBehaviour
             DialogueRunner = null; //maybe a check to see which dialogue exactly in case of two overlapping npc colliders?
             DialogueUI = null;
         }
-    }
-
-    public void StopTalking()
-    {
-        isTalking = false;
     }
 }

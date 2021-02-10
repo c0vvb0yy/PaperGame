@@ -1,29 +1,58 @@
 title: DialogueTest
 tags: 
 colorID: 0
-position: -655,310
+position: -673,296
 ---
+<<SetLeftSpeaker SpeakerContainer Anthrazit>>
+<<SetRightSpeaker SpeakerContainer Zaavan>>
+<<Darken SpeakerContainer right>>
 Anthrazit: I don't wanna think up any new test dialogue
 Anthrazit: I hope that's alright?
 [[Be understanding |Acknowledge]]
 [[Or dont I guess |Ignorance]]
+<<Darken SpeakerContainer left>>
 ===
 title: Acknowledge
 tags: 
 colorID: 0
-position: -434,-19
+position: -466,-45
 ---
 Zaavan: of course it is
-<<close>>
 <<wait 1>>
-Zaavan: ily😍
+<<SetLeftSpeaker SpeakerContainer arc>>
+<<Darken SpeakerContainer right>>
+Arrow: Hey can I also say something?
+<<SetRightSpeaker SpeakerContainer Anthrazit>>
+<<Darken SpeakerContainer left>>
+Anthrazit: Oh shit what the fuck?
+Anthrazit: How can you even talk?
+<<SetLeftSpeaker SpeakerContainer Zaavan>>
+<<Darken SpeakerContainer right>>
+Zaavan: Shhhh dont question it. Let's just leave.
 ===
 title: Ignorance
 tags: 
 colorID: 0
-position: 40,7
+position: -904,-40
 ---
+<<SetSpeaker TalkSprite Zaavan>>
 Zaavan: ... yikes.
 <<AwkwardLeave Player>>
 <<stop>>
+===
+title: ArrowMultiSpeaker
+tags: 
+colorID: 0
+position: -236,196
+---
+<<SetLeftSpeaker SpeakerContainer arc>>
+
+<<SetRightSpeaker SpeakerContainer Zaavan>>
+<<Darken SpeakerContainer right>>
+Arrow: You've brought me back to this cursed realm
+Arrow: why would you have done this?
+
+<<Darken SpeakerContainer left>>
+Zaavan: ...eh?
+Zaavan: y'know?
 ===
