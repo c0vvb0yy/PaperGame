@@ -46,8 +46,8 @@ colorID: 0
 position: -236,196
 ---
 <<SetLeftSpeaker SpeakerContainer arc>>
-
 <<SetRightSpeaker SpeakerContainer Zaavan>>
+
 <<Darken SpeakerContainer right>>
 Arrow: You've brought me back to this cursed realm
 Arrow: why would you have done this?
