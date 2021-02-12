@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animation FrontAnim;
     public Animation FrontWalk;
+    public Animation FrontJump;
     public Animation BackAnim;
     public Animation BackWalk;
     public SpriteAnimation Animator;
@@ -112,7 +113,23 @@ public class PlayerMovement : MonoBehaviour
                 FallSpeed = 0f;
             }
             JumpPressed = false;
-        }    
+        }
+        else
+        {
+            Body.velocity = Vector3.zero;
+            if(WalkedBack)
+            {
+                Animator.Animation = BackAnim;
+                Animator.AnimationReset();
+                FacingFront = false;
+            }
+            else
+            {
+                Animator.Animation = FrontAnim;
+                Animator.AnimationReset();
+                FacingFront = true;
+            }
+        }
     }
 
     public void Flip()
@@ -137,7 +154,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void DetermineAnimations()
     {
-        if((MoveInput.x == 0 && MoveInput.y == 0) ||!IsGrounded)
+        
+        if((JumpPressed && IsGrounded) || !IsGrounded)
+        {
+            Animator.Animation = FrontJump;
+            if(IsGrounded)
+                Animator.AnimationReset();
+            return;
+        }
+        if((MoveInput.x == 0 && MoveInput.y == 0))
         {
             if(WalkedBack)
             {
@@ -153,45 +178,48 @@ public class PlayerMovement : MonoBehaviour
             }
             return;
         }
-        bool walkingHorizontal = false;
-        bool walkingBack = false;
-        if(MoveInput.x != 0)
+        if(IsGrounded)
         {
-            walkingHorizontal = true;
-        }
-        if(MoveInput.y > 0)
-        {
-            walkingBack = true;
-            WalkedBack = true;
-        }
-        if(MoveInput.y < 0)
-        {
-            walkingBack = false;
-            WalkedBack = false;
-        }
-        if(walkingBack) //for y back
-        {
-            Animator.Animation = BackWalk;
-            //Animator.AnimationReset();
-            FacingFront = false;
-        }
-        else //for y forward
-        {
-            Animator.Animation = FrontWalk;
-            //Animator.AnimationReset();
-            FacingFront = true;
-        }
-        if(walkingHorizontal && WalkedBack) //just x input but previously has walked back
-        {
-            Animator.Animation = BackWalk;
-            //Animator.AnimationReset();
-            FacingFront = false;
-        }
-        else if(walkingHorizontal && !WalkedBack) //just x input but previously has walked forward
-        {
-            Animator.Animation = FrontWalk;
-            //Animator.AnimationReset();
-            FacingFront = true;
+            bool walkingHorizontal = false;
+            bool walkingBack = false;
+            if(MoveInput.x != 0)
+            {
+                walkingHorizontal = true;
+            }
+            if(MoveInput.y > 0)
+            {
+                walkingBack = true;
+                WalkedBack = true;
+            }
+            if(MoveInput.y < 0)
+            {
+                walkingBack = false;
+                WalkedBack = false;
+            }
+            if(walkingBack) //for y back
+            {
+                Animator.Animation = BackWalk;
+                //Animator.AnimationReset();
+                FacingFront = false;
+            }
+            else //for y forward
+            {
+                Animator.Animation = FrontWalk;
+                //Animator.AnimationReset();
+                FacingFront = true;
+            }
+            if(walkingHorizontal && WalkedBack) //just x input but previously has walked back
+            {
+                Animator.Animation = BackWalk;
+                //Animator.AnimationReset();
+                FacingFront = false;
+            }
+            else if(walkingHorizontal && !WalkedBack) //just x input but previously has walked forward
+            {
+                Animator.Animation = FrontWalk;
+                //Animator.AnimationReset();
+                FacingFront = true;
+            }
         }
     }
 }
