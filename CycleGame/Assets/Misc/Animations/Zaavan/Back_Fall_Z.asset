@@ -15,3 +15,17 @@ MonoBehaviour:
   KeyFrames:
   - Duration: 1
     Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}
+  - Duration: 1
+    Sprite: {fileID: 21300000, guid: 81b073844fc4b004e80f81bc507f69fe, type: 3}

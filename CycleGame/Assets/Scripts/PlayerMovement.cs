@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
             MoveInput.x = Input.GetAxisRaw("Horizontal");
             MoveInput.y = Input.GetAxisRaw("Vertical");
             MoveInput.Normalize();
+            
 
             Body.velocity = new Vector3(MoveInput.x, 0f, MoveInput.y) * Speed;
 
@@ -94,14 +95,6 @@ public class PlayerMovement : MonoBehaviour
                 }
                 FallSpeed += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
                 Body.velocity += new Vector3(0f, FallSpeed, 0f);
-                /*if(Body.velocity.y < -1f)
-                {
-                    IsFalling = true;
-                }
-                else
-                {
-                    IsFalling = false;
-                }*/
             }
             else
             {
@@ -109,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             DetermineAnimations();
+            NextPos();
 
             JumpPressed = false;
 
@@ -245,79 +239,18 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void DetermineAnimationsOLD()
+    public void NextPos()
     {
-        
-        if((JumpPressed && IsGrounded) || (!IsGrounded && !IsFalling))
-        {
-            Animator.AnimationReset();
-            Animator.Animation = FrontJump;
-            return;
-        }
-        if(IsFalling)
-        {
-            Animator.Animation = FrontFall;
-            Animator.AnimationReset();
-            return;
-        }
-        
-        if(IsGrounded)
-        {
-            bool walkingHorizontal = false;
-            bool walkingBack = false;
-            if(MoveInput.x != 0)
-            {
-                walkingHorizontal = true;
-            }
-            if(MoveInput.y > 0)
-            {
-                walkingBack = true;
-                WalkedBack = true;
-            }
-            if(MoveInput.y < 0)
-            {
-                walkingBack = false;
-                WalkedBack = false;
-            }
-            if(walkingBack) //for y back
-            {
-                Animator.Animation = BackWalk;
-                //Animator.AnimationReset();
-                FacingFront = false;
-            }
-            else //for y forward
-            {
-                Animator.Animation = FrontWalk;
-                //Animator.AnimationReset();
-                FacingFront = true;
-            }
-            if(walkingHorizontal && WalkedBack) //just x input but previously has walked back
-            {
-                Animator.Animation = BackWalk;
-                //Animator.AnimationReset();
-                FacingFront = false;
-            }
-            else if(walkingHorizontal && !WalkedBack) //just x input but previously has walked forward
-            {
-                Animator.Animation = FrontWalk;
-                //Animator.AnimationReset();
-                FacingFront = true;
-            }
-        }
-        if((Body.velocity.x == 0 && Body.velocity.y == 0))
-        {
-            if(WalkedBack)
-            {
-                Animator.Animation = BackAnim;
-                Animator.AnimationReset();
-                FacingFront = false;
-            }
-            else
-            {
-                Animator.Animation = FrontAnim;
-                Animator.AnimationReset();
-                FacingFront = true;
-            }
-        }
+        Vector3 finalPos = Step.transform.localPosition;
+        Vector3 velocity = Body.velocity;
+        var stepPos = Step.transform.localPosition;
+
+        finalPos += velocity*1.5f;
+
+
+        finalPos = new Vector3(Mathf.Clamp(finalPos.x, -6f, 6f), 0f,0f);
+        stepPos = new Vector3(Mathf.Clamp(stepPos.x, -6f, 6f), 0f,0f);
+        Step.transform.localPosition = Vector3.SmoothDamp(stepPos, finalPos, ref velocity, 2f);
+
     }
 }
