@@ -15,5 +15,11 @@ public class Animation : ScriptableObject
         
         public float Duration;
         public Sprite Sprite;
+
+       /* public Sprite GetSprite()
+        {
+            return Sprite;
+        }
+        */
     }
 }

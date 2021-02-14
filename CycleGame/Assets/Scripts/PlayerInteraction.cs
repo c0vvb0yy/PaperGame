@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
         if(PlayerManager.IsTalking)
         {
             if(Input.GetKeyDown(KeyCode.C))
-            {
+            {    
                 DialogueUI.MarkLineComplete();
             }
         }

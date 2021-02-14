@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask WhatIsGround;
     public Transform GroundPoint;
     public bool IsGrounded;
+    public bool IsFalling = false;
+    public bool IsJumping = false;
 
     public bool FacingRight = true;
     public bool FacingFront = true;
@@ -26,14 +28,15 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveInput;
     public bool IsWalking;
-    public Vector3 LastPos;
-    public Vector3 DeltaPosition;
 
     public Animation FrontAnim;
     public Animation FrontWalk;
     public Animation FrontJump;
+    public Animation FrontFall;
     public Animation BackAnim;
     public Animation BackWalk;
+    public Animation BackJump;
+    public Animation BackFall;
     public SpriteAnimation Animator;
 
     private Flip flip;
@@ -41,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LastPos = this.transform.position;
         flip = GetComponent<Flip>();
     }
 
@@ -62,32 +64,17 @@ public class PlayerMovement : MonoBehaviour
 
             Body.velocity = new Vector3(MoveInput.x, 0f, MoveInput.y) * Speed;
 
-            DeltaPosition = this.transform.position - LastPos;
-            LastPos = this.transform.position;
-            
-            //Direction Check/Flip
-            if(Body.velocity.x < 0 && FacingRight)
-            {
-                FacingRight = false;
-            }
-            if(Body.velocity.x > 0 && !FacingRight)
-            {
-                FacingRight = true;
-            }
-
             //Check For Ground
             RaycastHit hit;
             if(Physics.Raycast(GroundPoint.position, Vector3.down, out hit, .5f, WhatIsGround))
             {
                 IsGrounded = true;
+                IsFalling = false;
             }
             else
             {
                 IsGrounded = false;
             }
-
-            
-            DetermineAnimations();
             
             //All things Jumping
             if(JumpPressed && IsGrounded)
@@ -107,12 +94,24 @@ public class PlayerMovement : MonoBehaviour
                 }
                 FallSpeed += Physics.gravity.y * gravityMultiplier * Time.fixedDeltaTime;
                 Body.velocity += new Vector3(0f, FallSpeed, 0f);
+                /*if(Body.velocity.y < -1f)
+                {
+                    IsFalling = true;
+                }
+                else
+                {
+                    IsFalling = false;
+                }*/
             }
             else
             {
                 FallSpeed = 0f;
             }
+
+            DetermineAnimations();
+
             JumpPressed = false;
+
         }
         else
         {
@@ -142,42 +141,126 @@ public class PlayerMovement : MonoBehaviour
     [YarnCommand("AwkwardLeave")]
     public void AwkwardLeave()
     {
-        if(FacingRight && Step.position.x > 0 || !FacingRight && Step.position.x < 0)
-        {
-            
-            var step = Step.position;
-            step.x = -step.x;
-            Step.position = step;
-        }
-        this.transform.position = Vector3.MoveTowards(this.transform.position, Step.position, 1f);
+        Flip();
     }
 
-    private void DetermineAnimations()
+    public void DetermineAnimations()
     {
-        
-        if((JumpPressed && IsGrounded) || !IsGrounded)
-        {
-            Animator.Animation = FrontJump;
-            if(IsGrounded)
-                Animator.AnimationReset();
-            return;
-        }
-        if((MoveInput.x == 0 && MoveInput.y == 0))
+        DetermineDirection();
+        //If NOT MOVING AT ALL
+        if(Body.velocity == Vector3.zero)
         {
             if(WalkedBack)
             {
-                Animator.Animation = BackAnim;
                 Animator.AnimationReset();
-                FacingFront = false;
+                Animator.Animation = BackAnim;
             }
             else
             {
-                Animator.Animation = FrontAnim;
                 Animator.AnimationReset();
-                FacingFront = true;
+                Animator.Animation = FrontAnim;
             }
+        }
+        else //when theres ANY KIND of movement happening
+        {
+            if(FacingFront)
+            {
+                if(IsJumping)
+                {
+                    Animator.AnimationReset();
+                    Animator.Animation = FrontJump;
+                }
+                else if(IsFalling)
+                {
+                    Animator.AnimationReset();
+                    Animator.Animation = FrontFall;
+                }
+                else
+                {
+                    if(Animator.Animation != FrontWalk)
+                    {
+                        Animator.AnimationReset();
+                    }
+                    Animator.Animation = FrontWalk;
+                }
+            }
+            else
+            {
+                if(IsJumping)
+                {
+                    Animator.AnimationReset();
+                    Animator.Animation = BackJump;
+                }
+                else if(IsFalling)
+                {
+                    Animator.AnimationReset();
+                    Animator.Animation = BackFall;
+                }
+                else
+                {
+                    if(Animator.Animation != BackWalk)
+                    {
+                        Animator.AnimationReset();
+                    }
+                    Animator.Animation = BackWalk;
+                }
+            }
+        }
+    }
+
+    public void DetermineDirection()
+    {
+        if(Body.velocity.x < 0 && FacingRight)
+        {
+            FacingRight = false;
+        }
+        if(Body.velocity.x > 0 && !FacingRight)
+        {
+            FacingRight = true;
+        }
+        if(Body.velocity.z > 0 && FacingFront)
+        {
+            FacingFront = false;
+            WalkedBack = true;
+        }
+        if(Body.velocity.z < 0 && !FacingFront)
+        {
+            FacingFront = true;
+            WalkedBack = false;
+        }
+        if(IsGrounded)
+        {
+            IsFalling = false;
+            IsJumping = false;
+        }
+        if(Body.velocity.y < 0 && !IsGrounded)
+        {
+            IsFalling = true;
+            IsJumping = false;
+        }
+        if(Body.velocity.y > 0 && IsGrounded)
+        {
+            IsJumping = true;
+        }
+        
+    }
+
+    private void DetermineAnimationsOLD()
+    {
+        
+        if((JumpPressed && IsGrounded) || (!IsGrounded && !IsFalling))
+        {
+            Animator.AnimationReset();
+            Animator.Animation = FrontJump;
             return;
         }
+        if(IsFalling)
+        {
+            Animator.Animation = FrontFall;
+            Animator.AnimationReset();
+            return;
+        }
+        
         if(IsGrounded)
         {
             bool walkingHorizontal = false;
@@ -218,6 +301,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 Animator.Animation = FrontWalk;
                 //Animator.AnimationReset();
+                FacingFront = true;
+            }
+        }
+        if((Body.velocity.x == 0 && Body.velocity.y == 0))
+        {
+            if(WalkedBack)
+            {
+                Animator.Animation = BackAnim;
+                Animator.AnimationReset();
+                FacingFront = false;
+            }
+            else
+            {
+                Animator.Animation = FrontAnim;
+                Animator.AnimationReset();
                 FacingFront = true;
             }
         }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5211827737410314858}
   - component: {fileID: 1948758912205113177}
   - component: {fileID: 3741387543617355200}
+  - component: {fileID: 7610802976235918485}
   m_Layer: 0
   m_Name: DialogueParent
   m_TagString: Untagged
@@ -170,3 +171,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultVariables: []
   debugTextView: {fileID: 0}
+--- !u!114 &7610802976235918485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5329387227464183480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a44e894ab0813b4bb5d8612beb5cdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueRunner: {fileID: 5211827737410314858}
+  DialogueUI: {fileID: 1948758912205113177}

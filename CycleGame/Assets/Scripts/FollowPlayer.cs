@@ -32,7 +32,6 @@ public class FollowPlayer : MonoBehaviour
     {
         Body.SetDestination(Target.position);
 
-        DetermineDirection();
         DetermineAnimation();
 
         flip?.FlipSprite(FacingRight, FacingFront);
@@ -62,6 +61,7 @@ public class FollowPlayer : MonoBehaviour
     
     public void DetermineAnimation()
     {
+        DetermineDirection();
         if(Body.velocity == Vector3.zero)
         {
             if(WalkedBack)

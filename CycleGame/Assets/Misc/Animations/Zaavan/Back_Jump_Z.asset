@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf26e94711916d74a8d429624d24d33e, type: 3}
-  m_Name: Jump_Forward_Z
+  m_Name: Back_Jump_Z
   m_EditorClassIdentifier: 
   KeyFrames:
-  - Duration: 0.2
-    Sprite: {fileID: -5011698662364121499, guid: c6e96368e64856e4c91f52b908a0c76d, type: 3}
+  - Duration: 1.07
+    Sprite: {fileID: 21300000, guid: 9444b05d43ff61740ad009e83bf6cb34, type: 3}

@@ -15,10 +15,11 @@ Anthrazit: I hope that's alright?
 title: Acknowledge
 tags: 
 colorID: 0
-position: -466,-45
+position: -467,-47
 ---
-Zaavan: of course it is
-<<wait 1>>
+Zaavan: of course it is 
+<<close>>
+<<wait 2>>
 <<SetLeftSpeaker SpeakerContainer arc>>
 <<Darken SpeakerContainer right>>
 Arrow: Hey can I also say something?
