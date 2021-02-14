@@ -247,7 +247,6 @@ public class PlayerMovement : MonoBehaviour
 
         finalPos += velocity*1.5f;
 
-
         finalPos = new Vector3(Mathf.Clamp(finalPos.x, -6f, 6f), 0f,0f);
         stepPos = new Vector3(Mathf.Clamp(stepPos.x, -6f, 6f), 0f,0f);
         Step.transform.localPosition = Vector3.SmoothDamp(stepPos, finalPos, ref velocity, 2f);
