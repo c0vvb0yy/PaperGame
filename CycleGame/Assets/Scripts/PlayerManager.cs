@@ -5,16 +5,19 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static GameObject Player;
+    
+    public static int Level;
+    public static int EXP;
 
     private static Vector3 savedPos;
 
     public static bool IsTalking = false;
     public static bool FreeToMove = true;
-
+    public static bool IsFighting = false;
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+        //DontDestroyOnLoad(transform.gameObject);
     }
 
     void Start()
@@ -22,15 +25,34 @@ public class PlayerManager : MonoBehaviour
         Player = GameObject.FindWithTag("Player");    
     }
 
-    public void EnterDialogue()
-    {
-        IsTalking = true;
-        FreeToMove = false;
-    }
-
-    public void ExitDialogue()
+    public static void ForbidEverything()
     {
         IsTalking = false;
+        FreeToMove = false;
+        IsFighting = false;
+    }
+
+    public static void EnterDialogue()
+    {
+        ForbidEverything();
+        IsTalking = true;
+    }
+
+    public static void ExitDialogue()
+    {
+        ForbidEverything();
+        FreeToMove = true;
+    }
+
+    public static void EnterBattle()
+    {
+        ForbidEverything();
+        IsFighting = true;
+    }
+
+    public static void ExitBattle()
+    {
+        ForbidEverything();
         FreeToMove = true;
     }
 
