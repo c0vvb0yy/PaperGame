@@ -314,7 +314,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a728d6dbe0fea69468e85232e6d58d48, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600f48ab67902b488f312af9703dbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseMaterial: {fileID: 2100000, guid: a728d6dbe0fea69468e85232e6d58d48, type: 2}
   Sprite: {fileID: 21300000, guid: 64a82d6a62a9df843ab12cbfc5e48e50, type: 3}
   Height: 5.25
 --- !u!1 &339709047902133645
@@ -411,7 +412,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a728d6dbe0fea69468e85232e6d58d48, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -445,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7600f48ab67902b488f312af9703dbe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseMaterial: {fileID: 2100000, guid: a728d6dbe0fea69468e85232e6d58d48, type: 2}
   Sprite: {fileID: -950794112776639214, guid: 09b5d974a3802de43873db6da0d17de9, type: 3}
   Height: 16
 --- !u!114 &339709047902133642

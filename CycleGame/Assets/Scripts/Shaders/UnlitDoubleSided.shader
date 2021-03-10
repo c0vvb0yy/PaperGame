@@ -5,11 +5,11 @@ Shader "Tutorial/006_Basic_Transparency"{
 	}
 
 	SubShader{
-		Tags{ "RenderType"="Transparent" "Queue"="Transparent"}
+		Tags{ "RenderType"="Transparent" "Queue"="Transparent" "DisableBatching" = "True"}
 
 		Blend SrcAlpha OneMinusSrcAlpha
 		ZWrite off
-        Cull off
+        	Cull off
 
 
 		Pass{
@@ -44,11 +44,11 @@ Shader "Tutorial/006_Basic_Transparency"{
 
 			v2f vert(appdata v){
 				v2f o;
+				UNITY_SETUP_INSTANCE_ID(v);
 				o.position = UnityObjectToClipPos(v.vertex);
 				float4 scaleTrans = UNITY_ACCESS_INSTANCED_PROP(Props, _MainTex_ST);
 				o.uv = v.uv * scaleTrans.xy + scaleTrans.zw;
-				UNITY_SETUP_INSTANCE_ID(v);
-                UNITY_TRANSFER_INSTANCE_ID(v, o);
+				UNITY_TRANSFER_INSTANCE_ID(v, o);
 				return o;
 			}
 
