@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum BattleStates { START, ZAAVTURN, ANTHRATURN, ENEMYTURN, WON, LOST }
+public enum BattleStates { START, ZAAVTURN, ANTHRATURN, CHOOSEENEMY, CHOOSETEAMMATE, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
     public BattleStates State;
     public TextMeshProUGUI ConText;
-
+    public Transform BattleHUD;
+    
     public GameObject PartyPrefab;
-    public GameObject EnemyPrefab;
+    public GameObject[] EnemyPrefab;
 
     public Transform PartyLocation;
     public Transform EnemyLocation;
 
-    BattleUnit Zaav;
-    BattleUnit Anthra;
-    BattleUnit Enemy;
 
     public BattleStatsUI ZaavStats;
     public BattleStatsUI AnthraStats;
@@ -27,8 +28,16 @@ public class BattleSystem : MonoBehaviour
 
     public GameObject AttackButton;
     public GameObject HealButton;
+    public GameObject EnemySelector;
+
+    public EventSystem EventSystem;
+    
+    BattleUnit zaav;
+    BattleUnit anthra;
+    Dictionary<GameObject, BattleUnit> enemies = new Dictionary<GameObject, BattleUnit>();
     
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,24 +48,32 @@ public class BattleSystem : MonoBehaviour
 
     public void SetUpBattle()
     {
-        var PartyObject = Instantiate(PartyPrefab, PartyLocation);
-        Zaav = PartyObject.transform.GetChild(0).GetComponent<BattleUnit>();
-        Anthra = PartyObject.transform.GetChild(1).GetComponent<BattleUnit>();
+        var partyObject = Instantiate(PartyPrefab, PartyLocation);
+        zaav = partyObject.transform.GetChild(0).GetComponent<BattleUnit>();
+        anthra = partyObject.transform.GetChild(1).GetComponent<BattleUnit>();
 
         PlayerManager.EnterBattle();
         CompanionManager.EnterBattle();
 
-        var EnemyObject = Instantiate(EnemyPrefab, EnemyLocation);
-        Enemy = EnemyObject.GetComponent<BattleUnit>();
+        
+        for (int i = 0; i < EnemyPrefab.Length; i++)
+        {
+            var enemyObject = Instantiate(EnemyPrefab[i], EnemyLocation);
+            var position = enemyObject.transform.position;
+            position = new Vector3(((30 / (EnemyPrefab.Length + 1))*i + 6), position.y, position.z);
+            enemyObject.transform.position = position;
+            SpawnEnemySelector(enemyObject, i);
+        }
+        HideEnemySelectors();
 
-        ZaavStats.SetInfo(Zaav);
-        AnthraStats.SetInfo(Anthra);
-        EnemyStats.SetInfo(Enemy);
+        ZaavStats.SetInfo(zaav);
+        AnthraStats.SetInfo(anthra);
+        //EnemyStats.SetInfo(Enemy);
 
         State = BattleStates.ZAAVTURN;
         PlayerTurn();
     }
-
+    
     public void PlayerTurn()
     {
         if(State == BattleStates.ZAAVTURN)
@@ -69,28 +86,43 @@ public class BattleSystem : MonoBehaviour
     public void OnAttackButton()
     {
         HideButtons();
+        ShowEnemySelectors();
         if(State == BattleStates.ANTHRATURN )
-            StartCoroutine(PlayerAttack(Anthra));
+            StartCoroutine(ChooseEnemy(anthra));
         if(State == BattleStates.ZAAVTURN)
-            StartCoroutine(PlayerAttack(Zaav));
+            StartCoroutine(ChooseEnemy(zaav));
+          
+    }
+
+    IEnumerator ChooseEnemy(BattleUnit attacker)
+    {
+        
+        yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
+            HideEnemySelectors();
+            var enemy = enemies[EventSystem.currentSelectedGameObject];
+            ConText.text = (attacker.UnitName + " attacks " + enemy.UnitName);
+            yield return new WaitForSeconds(1.5f);
+            StartCoroutine(PlayerAttack(attacker, enemy));
             
+        
     }
 
     public void OnHealButton()
     {
         HideButtons();
         if(State == BattleStates.ANTHRATURN )
-            StartCoroutine(PlayerHeal(Anthra));
+            StartCoroutine(PlayerHeal(anthra));
         if(State == BattleStates.ZAAVTURN)
-            StartCoroutine(PlayerHeal(Zaav));
+            StartCoroutine(PlayerHeal(zaav));
     }
+
 
     IEnumerator PlayerHeal(BattleUnit player)
     {
         int heal = player.AtkDamage;
         player.Heal(heal);
         yield return new WaitForSeconds(1f);
-        if(player == Zaav)
+        if(player == zaav)
         {
             ZaavStats.SetInfo(player);
             State = BattleStates.ANTHRATURN;
@@ -104,62 +136,89 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator PlayerAttack(BattleUnit player)
+    IEnumerator PlayerAttack(BattleUnit attacker, BattleUnit target)
     {
         HideButtons();
-        bool IsDead = Enemy.TakeDamage(player.AtkDamage);
-        EnemyStats.SetInfo(Enemy);
+        bool IsDead = target.TakeDamage(attacker.AtkDamage);
+        //EnemyStats.SetInfo(target);
+        Debug.Log(target.CurrentHP);
         yield return new WaitForSeconds(2f);
         if(IsDead)
         {
+            KillEnemy(target);
+        }
+        else
+        {
+            NextTurn();
+        }
+    }
+
+    public void NextTurn()
+    {
+        if (State == BattleStates.ZAAVTURN)
+        {
+            State = BattleStates.ANTHRATURN;
+            PlayerTurn();
+        }
+        else
+        {
+            State = BattleStates.ENEMYTURN;
+            
+            StartCoroutine(EnemyTurn());
+        }
+    }
+    
+    public void KillEnemy(BattleUnit enemy)
+    {
+        if (enemies.Count <= 0) return;
+        var key = enemies.FirstOrDefault(x => x.Value == enemy).Key;
+        Destroy(key);
+        Destroy(enemy.gameObject);
+        enemies.Remove(key);
+        if (enemies.Count <= 0)
+        {
             State = BattleStates.WON;
+                
             EndBattle();
         }
         else
         {
-            if(player == Zaav)
-            {
-                State = BattleStates.ANTHRATURN;
-                PlayerTurn();
-            }
-            else
-            {
-            State = BattleStates.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
-            }
+            NextTurn();
         }
+
     }
 
     IEnumerator EnemyTurn()
     {
         HideButtons();
-        bool IsDead;
-        int target = Random.Range(0, 2);
-        if(target == 0)
+        foreach (var enemy in enemies)
         {
-            ConText.text = $"{Enemy.UnitName} attacks {Zaav.UnitName}!";
-            yield return new WaitForSeconds(1f);
-            IsDead = Zaav.TakeDamage(Enemy.AtkDamage);
-            ZaavStats.SetInfo(Zaav);
-        }
-        else
-        {
-            ConText.text = $"{Enemy.UnitName} attacks {Anthra.UnitName}!";
-            yield return new WaitForSeconds(1f);
-            IsDead = Anthra.TakeDamage(Enemy.AtkDamage);
-            AnthraStats.SetInfo(Anthra);
+            bool isDead;
+            int target = UnityEngine.Random.Range(0, 2);
+            if(target == 0)
+            {
+                ConText.text = $"{enemy.Value.UnitName} attacks {zaav.UnitName}!";
+                yield return new WaitForSeconds(1f);
+                isDead = zaav.TakeDamage(enemy.Value.AtkDamage);
+                ZaavStats.SetInfo(zaav);
+            }
+            else
+            {
+                ConText.text = $"{enemy.Value.UnitName} attacks {anthra.UnitName}!";
+                yield return new WaitForSeconds(1f);
+                isDead = anthra.TakeDamage(enemy.Value.AtkDamage);
+                AnthraStats.SetInfo(anthra);
+            }
+            if(isDead)
+            {
+                State = BattleStates.LOST;
+                EndBattle();
+            }
         }
         
-        if(IsDead)
-        {
-            State = BattleStates.LOST;
-            EndBattle();
-        }
-        else
-        {
-            State = BattleStates.ZAAVTURN;
-            PlayerTurn();
-        }
+        State = BattleStates.ZAAVTURN;
+        PlayerTurn();
+        
 
     }
 
@@ -169,6 +228,12 @@ public class BattleSystem : MonoBehaviour
             ConText.text = "WON!";
         else
             ConText.text = "[Achilles voice]: died.";
+    }
+    
+    IEnumerator WaitForKeyDown(KeyCode keyCode)
+    {
+        while (!Input.GetKeyDown(keyCode))
+            yield return null;
     }
 
     public void HideButtons()
@@ -180,6 +245,35 @@ public class BattleSystem : MonoBehaviour
     {
         AttackButton.SetActive(true);
         HealButton.SetActive(true);
+        EventSystem.SetSelectedGameObject(AttackButton);
+    }
+    
+    private void SpawnEnemySelector(GameObject enemyObject, int index)
+    {
+        var enemySelector = Instantiate<GameObject>(EnemySelector, BattleHUD);
+        enemies.Add(enemySelector, enemyObject.GetComponent<BattleUnit>());
+        Vector3 offset = Camera.main.WorldToScreenPoint(enemyObject.transform.position);
+        offset.y = 700;
+        enemySelector.transform.position = offset;
+        
+    }
+
+    private void HideEnemySelectors()
+    {
+        if (enemies == null) return;
+        foreach (var button in enemies)
+        {
+            button.Key.SetActive(false);
+        }
+    }
+    private void ShowEnemySelectors()
+    {
+        if (enemies == null) return;
+        foreach (var button in enemies)
+        {
+            button.Key.SetActive(true);
+        }
+        EventSystem.SetSelectedGameObject(enemies.Keys.First());
     }
 
 }

@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: Zaavan
-  AtkDamage: 2
+  AtkDamage: 3
   Defense: 0
   MaxHP: 10
   CurrentHP: 10
