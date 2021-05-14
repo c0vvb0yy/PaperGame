@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum BattleStates { START, ZAAVTURN, ANTHRATURN, CHOOSEENEMY, CHOOSETEAMMATE, ENEMYTURN, WON, LOST }
+public enum BattleStates { START, ZAAVTURN, ANTHRATURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class BattleSystem : MonoBehaviour
     BattleUnit zaav;
     BattleUnit anthra;
     Dictionary<GameObject, BattleUnit> enemies = new Dictionary<GameObject, BattleUnit>();
-    
+    Dictionary<GameObject, BattleUnit> party = new Dictionary<GameObject, BattleUnit>();
 
     
     // Start is called before the first frame update
@@ -49,9 +49,16 @@ public class BattleSystem : MonoBehaviour
     public void SetUpBattle()
     {
         var partyObject = Instantiate(PartyPrefab, PartyLocation);
-        zaav = partyObject.transform.GetChild(0).GetComponent<BattleUnit>();
-        anthra = partyObject.transform.GetChild(1).GetComponent<BattleUnit>();
-
+        var zaavan = partyObject.transform.GetChild(0);
+        zaav = zaavan.GetComponent<BattleUnit>();
+        SpawnPartySelector(zaavan.gameObject);
+        var anthrazit = partyObject.transform.GetChild(1);
+        anthra = anthrazit.GetComponent<BattleUnit>();
+        SpawnPartySelector(anthrazit.gameObject);
+        
+        HidePartySelectors();
+        
+        
         PlayerManager.EnterBattle();
         CompanionManager.EnterBattle();
 
@@ -62,7 +69,7 @@ public class BattleSystem : MonoBehaviour
             var position = enemyObject.transform.position;
             position = new Vector3(((30 / (EnemyPrefab.Length + 1))*i + 6), position.y, position.z);
             enemyObject.transform.position = position;
-            SpawnEnemySelector(enemyObject, i);
+            SpawnEnemySelector(enemyObject);
         }
         HideEnemySelectors();
 
@@ -96,41 +103,52 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator ChooseEnemy(BattleUnit attacker)
     {
-        
+        ConText.text = "Choose Enemy";
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
             HideEnemySelectors();
             var enemy = enemies[EventSystem.currentSelectedGameObject];
             ConText.text = (attacker.UnitName + " attacks " + enemy.UnitName);
             yield return new WaitForSeconds(1.5f);
             StartCoroutine(PlayerAttack(attacker, enemy));
-            
-        
     }
 
     public void OnHealButton()
     {
         HideButtons();
+        ShowPartySelectors();
         if(State == BattleStates.ANTHRATURN )
-            StartCoroutine(PlayerHeal(anthra));
+            StartCoroutine(ChoosePartyMember(anthra));
         if(State == BattleStates.ZAAVTURN)
-            StartCoroutine(PlayerHeal(zaav));
+            StartCoroutine(ChoosePartyMember(zaav));
     }
 
+    IEnumerator ChoosePartyMember(BattleUnit initiator)
+    {
+        ConText.text = "Choose who to heal";
+        yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
+        HidePartySelectors();
+        var member = party[EventSystem.currentSelectedGameObject];
+        ConText.text = (initiator.UnitName + " heals " + member.UnitName);
+        yield return new WaitForSeconds(1.5f);
+        StartCoroutine(PlayerHeal(initiator, member));
+    }
 
-    IEnumerator PlayerHeal(BattleUnit player)
+    IEnumerator PlayerHeal(BattleUnit player, BattleUnit healed)
     {
         int heal = player.AtkDamage;
-        player.Heal(heal);
+        healed.Heal(heal);
         yield return new WaitForSeconds(1f);
         if(player == zaav)
         {
             ZaavStats.SetInfo(player);
+            AnthraStats.SetInfo(healed);
             State = BattleStates.ANTHRATURN;
             PlayerTurn();
         }
         else
         {
             AnthraStats.SetInfo(player);
+            ZaavStats.SetInfo(healed);
             State = BattleStates.ENEMYTURN;
             StartCoroutine(EnemyTurn());
         }
@@ -248,19 +266,19 @@ public class BattleSystem : MonoBehaviour
         EventSystem.SetSelectedGameObject(AttackButton);
     }
     
-    private void SpawnEnemySelector(GameObject enemyObject, int index)
+    private void SpawnEnemySelector(GameObject enemyObject)
     {
         var enemySelector = Instantiate<GameObject>(EnemySelector, BattleHUD);
         enemies.Add(enemySelector, enemyObject.GetComponent<BattleUnit>());
         Vector3 offset = Camera.main.WorldToScreenPoint(enemyObject.transform.position);
         offset.y = 700;
         enemySelector.transform.position = offset;
-        
     }
+    
 
     private void HideEnemySelectors()
     {
-        if (enemies == null) return;
+        if (enemies.Count == 0) return;
         foreach (var button in enemies)
         {
             button.Key.SetActive(false);
@@ -268,12 +286,40 @@ public class BattleSystem : MonoBehaviour
     }
     private void ShowEnemySelectors()
     {
-        if (enemies == null) return;
+        if (enemies.Count == 0) return;
         foreach (var button in enemies)
         {
             button.Key.SetActive(true);
         }
         EventSystem.SetSelectedGameObject(enemies.Keys.First());
+    }
+    
+    private void SpawnPartySelector(GameObject enemyObject)
+    {
+        var enemySelector = Instantiate<GameObject>(EnemySelector, BattleHUD);
+        party.Add(enemySelector, enemyObject.GetComponent<BattleUnit>());
+        Vector3 offset = Camera.main.WorldToScreenPoint(enemyObject.transform.position);
+        offset.y = 700;
+        enemySelector.transform.position = offset;
+    }
+
+    private void HidePartySelectors()
+    {
+        if (party.Count == 0) return;
+        foreach (var member in party)
+        {
+            member.Key.SetActive(false);
+        }
+    }
+    
+    private void ShowPartySelectors()
+    {
+        if (party.Count == 0) return;
+        foreach (var member in party)
+        {
+            member.Key.SetActive(true);
+        }
+        EventSystem.SetSelectedGameObject(party.Keys.First());
     }
 
 }
