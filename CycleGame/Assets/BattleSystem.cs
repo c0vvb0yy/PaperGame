@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleStates { START, ZAAVTURN, ANTHRATURN, ENEMYTURN, WON, LOST }
@@ -16,7 +17,9 @@ public class BattleSystem : MonoBehaviour
     public Transform BattleHUD;
     
     public GameObject PartyPrefab;
-    public GameObject[] EnemyPrefab;
+    public static GameObject[] EnemyPrefab = new GameObject[1];
+    public static string LastScene;
+    public static EnemyBehaviour EnemyBehaviour;
 
     public Transform PartyLocation;
     public Transform EnemyLocation;
@@ -37,13 +40,24 @@ public class BattleSystem : MonoBehaviour
     Dictionary<GameObject, BattleUnit> enemies = new Dictionary<GameObject, BattleUnit>();
     Dictionary<GameObject, BattleUnit> party = new Dictionary<GameObject, BattleUnit>();
 
-    
     // Start is called before the first frame update
     void Start()
     {
         State = BattleStates.START;
         HideButtons();
         SetUpBattle();
+        EventSystem = FindObjectOfType<EventSystem>();
+    }
+
+    public static void LoadEnemies(EnemyBehaviour enemy, string lastScene)
+    {
+        EnemyBehaviour = enemy;
+        if (EnemyPrefab.Length >= 1)
+        {
+            EnemyPrefab = null;
+        }
+        EnemyPrefab = EnemyBehaviour.Enemies;
+        LastScene = lastScene;
     }
 
     public void SetUpBattle()
@@ -104,6 +118,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator ChooseEnemy(BattleUnit attacker)
     {
         ConText.text = "Choose Enemy";
+        yield return new WaitForSeconds(0.7f);
         yield return StartCoroutine(WaitForKeyDown(KeyCode.Space));
             HideEnemySelectors();
             var enemy = enemies[EventSystem.currentSelectedGameObject];
@@ -159,7 +174,6 @@ public class BattleSystem : MonoBehaviour
         HideButtons();
         bool IsDead = target.TakeDamage(attacker.AtkDamage);
         //EnemyStats.SetInfo(target);
-        Debug.Log(target.CurrentHP);
         yield return new WaitForSeconds(2f);
         if(IsDead)
         {
@@ -243,9 +257,33 @@ public class BattleSystem : MonoBehaviour
     public void EndBattle()
     {
         if(State == BattleStates.WON)
-            ConText.text = "WON!";
+        { 
+            ConText.text =  "WON!";
+
+            PlayerManager.HP = zaav.CurrentHP;
+            CompanionManager.HP = anthra.CurrentHP;
+
+            PlayerManager.EXP += EnemyBehaviour.ExperiencePoints;
+            Debug.Log("EXP: " + PlayerManager.EXP);
+            if(PlayerManager.EXP >= 100)
+            {
+                LevelUp();
+            }
+            
+            PlayerManager.ExitBattle();
+            EnemyBehaviour.Defeat.Invoke();
+            SceneManager.UnloadSceneAsync("BattleArena");
+        }
         else
-            ConText.text = "[Achilles voice]: died.";
+        {
+            ConText.text = "woa wtf how did u die";
+        }
+    }
+
+    public static void LevelUp()
+    {
+        Debug.Log("LevelUp!!!");
+        PlayerManager.EXP = 0;
     }
     
     IEnumerator WaitForKeyDown(KeyCode keyCode)

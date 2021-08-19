@@ -30,14 +30,20 @@ public class FollowPlayer : MonoBehaviour
 
     void Update()
     {
-        if(!CompanionManager.IsFighting)
+        if (!CompanionManager.FreeToMove)
         {
-            Body.SetDestination(Target.position);
-
+            Body.ResetPath();
+            Body.SetDestination(this.transform.position);
+            Body.velocity = new Vector3();
             DetermineAnimation();
+            return;
+        };
+        
+        Body.SetDestination(Target.position);
 
-            flip?.FlipSprite(FacingRight, FacingFront);
-        }
+        DetermineAnimation();
+
+        flip?.FlipSprite(FacingRight, FacingFront);
     }
 
     public void DetermineDirection()

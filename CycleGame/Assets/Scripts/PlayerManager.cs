@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     
     public static int Level;
     public static int EXP;
+    public static int HP;
 
     private static Vector3 savedPos;
 
@@ -53,6 +54,7 @@ public class PlayerManager : MonoBehaviour
     public static void ExitBattle()
     {
         ForbidEverything();
+        LoadPos();
         FreeToMove = true;
     }
 
@@ -63,8 +65,7 @@ public class PlayerManager : MonoBehaviour
 
     public static void LoadPos()
     {
-        if(savedPos != null)
-            Player.transform.position = savedPos;
+        Player.transform.position = savedPos;
     }
 
 }

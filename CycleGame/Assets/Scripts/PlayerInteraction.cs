@@ -27,6 +27,7 @@ public class PlayerInteraction : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.C) && !PlayerManager.IsTalking)
         {
+            
             if(NearNPC)
             {
                 DialogueRunner.StartDialogue();

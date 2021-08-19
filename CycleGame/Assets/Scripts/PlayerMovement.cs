@@ -241,15 +241,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void NextPos()
     {
-        Vector3 finalPos = Step.transform.localPosition;
+        var localPosition = Step.transform.localPosition;
+        Vector3 finalPos = localPosition;
         Vector3 velocity = Body.velocity;
-        var stepPos = Step.transform.localPosition;
+        var stepPos = localPosition;
 
         finalPos += velocity*1.5f;
 
         finalPos = new Vector3(Mathf.Clamp(finalPos.x, -6f, 6f), 0f,0f);
         stepPos = new Vector3(Mathf.Clamp(stepPos.x, -6f, 6f), 0f,0f);
-        Step.transform.localPosition = Vector3.SmoothDamp(stepPos, finalPos, ref velocity, 2f);
-
+        localPosition = Vector3.SmoothDamp(stepPos, finalPos, ref velocity, 2f);
+        Step.transform.localPosition = localPosition;
     }
 }

@@ -1,22 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CompanionManager : MonoBehaviour
 {
+    public static GameObject Companion;
     private static Vector3 savedPos;
 
+    public static int HP;
+    
     public static bool IsFighting;
+    public static bool IsTalking;
+    public static bool FreeToMove = true;
 
     void Awake()
     {
         //DontDestroyOnLoad(transform.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        Companion = GameObject.FindWithTag("Anthra");
+    }
+
+    // Update is called once per frame
+
+    public static void ForbidEverything()
+    {
+        IsTalking = false;
+        FreeToMove = false;
+        IsFighting = false;
+    }
+
+    public static void EnterDialogue()
+    {
+        ForbidEverything();
+        IsTalking = true;
+    }
+
+    public static void ExitDialogue()
+    {
+        ForbidEverything();
+        FreeToMove = true;
     }
 
     public static void EnterBattle()
@@ -29,14 +55,13 @@ public class CompanionManager : MonoBehaviour
         IsFighting = false;
     }
 
-    public void SavePos()
+    public static void SavePos()
     {
-        savedPos = transform.position;
+        savedPos = Companion.transform.position;
     }
 
-    public void LoadPos()
+    public static void LoadPos()
     {
-        if(savedPos != null)
-            transform.position = savedPos;
+        Companion.transform.position = savedPos;
     }
 }
