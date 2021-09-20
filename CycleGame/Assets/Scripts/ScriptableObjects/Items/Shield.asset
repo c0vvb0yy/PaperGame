@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d39cc1d68638a54baf5d74f57fa497d, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 6942633984148795582, guid: 4de10261162d84d4b9e6633b522d6ab8, type: 3}
   Type: 1
-  Description: 
+  Description: protecc
   AtkBonus: 0
-  DefBonus: 0
+  DefBonus: 2

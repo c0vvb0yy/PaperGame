@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     public static bool IsTalking = false;
     public static bool FreeToMove = true;
     public static bool IsFighting = false;
+    public static bool IsPaused = false;
 
     void Awake()
     {
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
         IsTalking = false;
         FreeToMove = false;
         IsFighting = false;
+        IsPaused = false;
     }
 
     public static void EnterDialogue()
@@ -56,6 +58,18 @@ public class PlayerManager : MonoBehaviour
     {
         ForbidEverything();
         LoadPos();
+        FreeToMove = true;
+    }
+
+    public static void PauseGame()
+    {
+        ForbidEverything();
+        IsPaused = true;
+    }
+    
+    public static void ResumeGame()
+    {
+        ForbidEverything();
         FreeToMove = true;
     }
 

@@ -18,29 +18,18 @@ public class DisplayInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateDisplay();
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
-    void Update()
+    void OnEnable() 
     {
         UpdateDisplay();
     }
 
-    public void CreateDisplay()
-    {
-        for (int i = 0; i < Inventory.Container.Count; i++)
-        {
-            var obj = Instantiate(Inventory.Container[i].Item.Prefab, Vector3.zero, Quaternion.identity, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = Inventory.Container[i].Amount.ToString("n0");
-            itemsDisplayed.Add(Inventory.Container[i], obj);
-        }
-    }
-
     public Vector3 GetPosition(int i) 
     {
-      return new Vector3(XStart + (XBorderBetweenItems * (i % NumberOfColumns)), YStart + (-YBorderBetweenItems * (i / NumberOfColumns)), 0f);  
+        return new Vector3(XStart + (XBorderBetweenItems * (i % NumberOfColumns)), YStart + (-YBorderBetweenItems * (i / NumberOfColumns)), 0f);  
     }
 
     public void UpdateDisplay()

@@ -8,6 +8,7 @@ TagManager:
   - SpeakerBox
   - DialogueBox
   - Anthra
+  - Item
   layers:
   - Default
   - TransparentFX
