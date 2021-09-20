@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6255f78ae302e4592500c9bf8c7c79, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 2719321822614292713, guid: 4c8576f6c7bd5fe4eaaed4b0d8ade8d8, type: 3}
+  Id: 1
+  UIDisplay: {fileID: 21300000, guid: 64a82d6a62a9df843ab12cbfc5e48e50, type: 3}
   Type: 0
   Description: '*Gluck Gluck.*'
-  RestoreHealthValue: 5
+  buffs: []

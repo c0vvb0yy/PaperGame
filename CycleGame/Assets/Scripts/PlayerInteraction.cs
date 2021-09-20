@@ -40,6 +40,7 @@ public class PlayerInteraction : MonoBehaviour
                 DialogueRunner.StartDialogue();
             }
         }
+        
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -53,10 +54,10 @@ public class PlayerInteraction : MonoBehaviour
 
         if(other.CompareTag("Item"))
         {
-            var item = other.GetComponent<Item>();
+            var item = other.GetComponent<GroundItem>();
             if(item)
             {
-                playerManager.Inventory.AddItem(item.HeldItem, 1);
+                playerManager.Inventory.AddItem(new Item(item.HeldItem), 1);
                 Destroy(other.gameObject);
             }
         }

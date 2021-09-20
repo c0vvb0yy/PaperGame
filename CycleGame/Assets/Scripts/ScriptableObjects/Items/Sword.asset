@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d39cc1d68638a54baf5d74f57fa497d, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6024198725408157, guid: 68b177751eb59ba4f9c2dc4411a55fc3, type: 3}
+  Id: 4
+  UIDisplay: {fileID: 21300000, guid: a6437d2f3b1bf4da7a9619a6b6446a16, type: 3}
   Type: 1
   Description: sord................
-  AtkBonus: 2
-  DefBonus: 0
+  buffs:
+  - Attribute: 0
+    Value: 2

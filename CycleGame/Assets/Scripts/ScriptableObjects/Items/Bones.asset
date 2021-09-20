@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998d37b312072154dbfd2d27ad933ed8, type: 3}
   m_Name: Bones
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6796264455113179475, guid: b7ee3768ae826ae4aab1272a44e0c1bc, type: 3}
+  Id: 5
+  UIDisplay: {fileID: 21300000, guid: 1fc0ec7519b900a47a8dde83b1324f6c, type: 3}
   Type: 2
   Description: The Prize of Victory.
+  buffs: []

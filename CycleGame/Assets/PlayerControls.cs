@@ -26,6 +26,8 @@ public class PlayerControls : MonoBehaviour
             }
             isPaused = !isPaused;
         }
+
+        
     }
 
     public void DisplayPauseMenu()

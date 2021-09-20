@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment Object", menuName = "ScriptableObjects/Items/Equipment")]
 public class EquipmentObject : ItemObject
 {
-    public float AtkBonus;
-    public float DefBonus;
+    //public float AtkBonus;
+    //public float DefBonus;
     
     public void Awake() 
     {
