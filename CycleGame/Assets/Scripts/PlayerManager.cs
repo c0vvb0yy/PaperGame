@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public InventoryObject Inventory;
     public static GameObject Player;
     
     public static int Level;

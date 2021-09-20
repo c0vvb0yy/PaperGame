@@ -8,10 +8,11 @@ public class PlayerInteraction : MonoBehaviour
     public bool NearNPC;
     DialogueRunner DialogueRunner;
     DialogueUI DialogueUI;
+    PlayerManager playerManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerManager = GetComponent<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -48,6 +49,16 @@ public class PlayerInteraction : MonoBehaviour
             NearNPC = true;
             DialogueRunner = other.gameObject.GetComponentInChildren<DialogueRunner>();
             DialogueUI = other.gameObject.GetComponentInChildren<DialogueUI>();
+        }
+
+        if(other.CompareTag("Item"))
+        {
+            var item = other.GetComponent<Item>();
+            if(item)
+            {
+                playerManager.Inventory.AddItem(item.HeldItem, 1);
+                Destroy(other.gameObject);
+            }
         }
     }
 
