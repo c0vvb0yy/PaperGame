@@ -28,6 +28,19 @@ public class PlayerManager : MonoBehaviour
         Player = GameObject.FindWithTag("Player");    
     }
 
+    void Update() 
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            Inventory.Save();
+        }
+        if(Input.GetKeyDown(KeyCode.U))
+        {
+            Inventory.Load();
+        }
+    }
+    
+
     public static void ForbidEverything()
     {
         IsTalking = false;
@@ -66,7 +79,7 @@ public class PlayerManager : MonoBehaviour
         ForbidEverything();
         IsPaused = true;
     }
-    
+
     public static void ResumeGame()
     {
         ForbidEverything();
