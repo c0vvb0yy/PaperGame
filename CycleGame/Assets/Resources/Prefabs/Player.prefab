@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 2037495693}
   - component: {fileID: 2037495694}
   - component: {fileID: 1264974285}
+  - component: {fileID: 799632561}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -341,15 +342,6 @@ MonoBehaviour:
   WalkedBack: 0
   MoveInput: {x: 0, y: 0}
   IsWalking: 0
-  FrontAnim: {fileID: 11400000, guid: e7f92160e2caed14fbfa0069355aad77, type: 2}
-  FrontWalk: {fileID: 11400000, guid: 50041583c0485784490005764d8bf80c, type: 2}
-  FrontJump: {fileID: 11400000, guid: 1eb730179a852c54d87546452ea82fab, type: 2}
-  FrontFall: {fileID: 11400000, guid: 05ad7be0be5a24e49a283aecc17c9b4e, type: 2}
-  BackAnim: {fileID: 11400000, guid: b9e3ca08d1c21754f87dfd515727654c, type: 2}
-  BackWalk: {fileID: 11400000, guid: 981409e60d3a9d44bb5dea3715e50020, type: 2}
-  BackJump: {fileID: 11400000, guid: a7304bd82d09a7d4db6edfa0d48375d8, type: 2}
-  BackFall: {fileID: 11400000, guid: 0c97c64dbd015a4429a16140e98f1518, type: 2}
-  Animator: {fileID: 4267052143488672817}
 --- !u!65 &4267052144571032550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -421,3 +413,24 @@ MonoBehaviour:
   Defense: 0
   MaxHP: 10
   CurrentHP: 10
+--- !u!114 &799632561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267052144571032554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5e57f033395b843ad3ef426ba86952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementAnims:
+  - {fileID: 11400000, guid: 50041583c0485784490005764d8bf80c, type: 2}
+  - {fileID: 11400000, guid: 981409e60d3a9d44bb5dea3715e50020, type: 2}
+  - {fileID: 11400000, guid: 1eb730179a852c54d87546452ea82fab, type: 2}
+  - {fileID: 11400000, guid: a7304bd82d09a7d4db6edfa0d48375d8, type: 2}
+  - {fileID: 11400000, guid: 05ad7be0be5a24e49a283aecc17c9b4e, type: 2}
+  - {fileID: 11400000, guid: 0c97c64dbd015a4429a16140e98f1518, type: 2}
+  FrontFacingAnimtion: {fileID: 11400000, guid: e7f92160e2caed14fbfa0069355aad77, type: 2}
+  BackFacingAnimation: {fileID: 11400000, guid: b9e3ca08d1c21754f87dfd515727654c, type: 2}
