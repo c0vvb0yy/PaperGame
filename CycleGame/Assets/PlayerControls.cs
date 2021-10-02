@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public GameObject InventoryCanvas;
-    public GameObject PartyStatsCanvas;
+    public GameObject[] PauseCanvasses;
     
     private bool isPaused = false;
 
@@ -32,14 +31,18 @@ public class PlayerControls : MonoBehaviour
 
     public void DisplayPauseMenu()
     {
-        InventoryCanvas.SetActive(true);
-        PartyStatsCanvas.SetActive(true);
+        foreach (var canvas in PauseCanvasses)
+        {
+            canvas.SetActive(true);
+        }
     }
 
     public void HidePauseMenu()
     {
-        InventoryCanvas.SetActive(false);
-        PartyStatsCanvas.SetActive(false);
+        foreach (var canvas in PauseCanvasses)
+        {
+            canvas.SetActive(false);
+        }
     }
 
 }

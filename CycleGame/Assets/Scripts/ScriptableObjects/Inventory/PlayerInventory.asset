@@ -17,24 +17,26 @@ MonoBehaviour:
   Container:
     Items:
     - Item:
-        Name: Shield
+        Name: 
         Id: 0
-        buffs:
-        - Attribute: 1
-          Value: 2
-        - Attribute: 2
-          Value: 1
-      ID: 0
-      Amount: 1
-    - Item:
-        Name: Potion
-        Id: 1
         buffs: []
-      ID: 1
-      Amount: 1
+      ID: -1
+      Amount: 0
     - Item:
-        Name: Bones
-        Id: 5
+        Name: 
+        Id: 0
         buffs: []
-      ID: 5
-      Amount: 1
+      ID: -1
+      Amount: 0
+    - Item:
+        Name: 
+        Id: 0
+        buffs: []
+      ID: -1
+      Amount: 0
+    - Item:
+        Name: 
+        Id: 0
+        buffs: []
+      ID: -1
+      Amount: 0

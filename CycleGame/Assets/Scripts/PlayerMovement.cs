@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
+[RequireComponent (typeof(AnimationManager))]
+[RequireComponent(typeof(Flip))]
 public class PlayerMovement : MonoBehaviour
 {
     public float Speed = 5f;
@@ -29,22 +31,25 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 MoveInput;
     public bool IsWalking;
 
-    public Animation FrontAnim;
-    public Animation FrontWalk;
-    public Animation FrontJump;
-    public Animation FrontFall;
-    public Animation BackAnim;
-    public Animation BackWalk;
-    public Animation BackJump;
-    public Animation BackFall;
-    public SpriteAnimation Animator;
+    //public MovementAnimations MovementAnimations;
+
+
+
+
+
+
+
+
 
     private Flip flip;
+    private AnimationManager animationManager;
 
     // Start is called before the first frame update
     void Start()
     {
         flip = GetComponent<Flip>();
+        animationManager = GetComponent<AnimationManager>();
+
     }
 
     // Update is called once per frame
@@ -110,16 +115,17 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Body.velocity = Vector3.zero;
+            animationManager.PlayDefaultAnimation();
             if(WalkedBack)
             {
-                Animator.Animation = BackAnim;
-                Animator.AnimationReset();
+
+
                 FacingFront = false;
             }
             else
             {
-                Animator.Animation = FrontAnim;
-                Animator.AnimationReset();
+
+
                 FacingFront = true;
             }
         }
@@ -144,16 +150,16 @@ public class PlayerMovement : MonoBehaviour
         //If NOT MOVING AT ALL
         if(Body.velocity == Vector3.zero)
         {
-            if(WalkedBack)
-            {
-                Animator.AnimationReset();
-                Animator.Animation = BackAnim;
-            }
-            else
-            {
-                Animator.AnimationReset();
-                Animator.Animation = FrontAnim;
-            }
+            animationManager.PlayDefaultAnimation();
+
+
+
+
+
+
+
+
+
         }
         else //when theres ANY KIND of movement happening
         {
@@ -161,42 +167,42 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(IsJumping)
                 {
-                    Animator.AnimationReset();
-                    Animator.Animation = FrontJump;
+                    animationManager.PlayMovementAnimation(MovementAnimations.FRONTJUMP);
+
                 }
                 else if(IsFalling)
                 {
-                    Animator.AnimationReset();
-                    Animator.Animation = FrontFall;
+                    animationManager.PlayMovementAnimation(MovementAnimations.FRONTFALL);
+
                 }
                 else
                 {
-                    if(Animator.Animation != FrontWalk)
-                    {
-                        Animator.AnimationReset();
-                    }
-                    Animator.Animation = FrontWalk;
+                    //animationManager.SetAnimation(FrontWalk);
+                    animationManager.PlayMovementAnimation(MovementAnimations.FRONTWALK);
+
+
+
                 }
             }
             else
             {
                 if(IsJumping)
                 {
-                    Animator.AnimationReset();
-                    Animator.Animation = BackJump;
+                    animationManager.PlayMovementAnimation(MovementAnimations.BACKJUMP);
+
                 }
                 else if(IsFalling)
                 {
-                    Animator.AnimationReset();
-                    Animator.Animation = BackFall;
+                    animationManager.PlayMovementAnimation(MovementAnimations.BACKFALL);
+
                 }
                 else
                 {
-                    if(Animator.Animation != BackWalk)
-                    {
-                        Animator.AnimationReset();
-                    }
-                    Animator.Animation = BackWalk;
+                    animationManager.PlayMovementAnimation(MovementAnimations.BACKWALK);
+
+
+
+
                 }
             }
         }

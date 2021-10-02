@@ -23,7 +23,7 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
 
     public void AddItem(Item item, int amount)
     {
-        for (int i = 0; i < Container.Items.Count; i++)
+        for (int i = 0; i < Container.Items.Length; i++)
         {
             if(Container.Items[i].Item.Id == item.Id)
             {
@@ -32,8 +32,21 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
             }
         }
         
-        Container.Items.Add(new InventorySlot(item, item.Id, amount));
+        SetFirstEmptySlot(item, amount);
+    }
 
+    public InventorySlot SetFirstEmptySlot(Item item, int amount)
+    {
+        for (int i = 0; i < Container.Items.Length; i++)
+        {
+            if(Container.Items[i].ID <= -1)
+            {
+                Container.Items[i].UpdateSlot(item, item.Id, amount);
+                return Container.Items[i];
+            }
+        }
+        //what happens if inventory full????
+        return null;
     }
 
     [ContextMenu("Save")]
@@ -78,7 +91,8 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
 [System.Serializable]
 public class Inventory
 {
-    public List<InventorySlot> Items = new List<InventorySlot>();
+    public InventorySlot[] Items = new InventorySlot[4];
+
 }
 
 [System.Serializable]
@@ -88,8 +102,20 @@ public class InventorySlot
     public int ID;
     public int Amount;
     
+    public InventorySlot()
+    {
+        Item = null;
+        ID = -1;
+        Amount = 0;
+    }
 
     public InventorySlot(Item item, int id, int amount)
+    {
+        Item = item;
+        ID = id;
+        Amount = amount;
+    }
+    public void UpdateSlot(Item item, int id, int amount)
     {
         Item = item;
         ID = id;

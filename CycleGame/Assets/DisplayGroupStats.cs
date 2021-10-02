@@ -7,21 +7,18 @@ public class DisplayGroupStats : MonoBehaviour
 {
     private TextMeshProUGUI groupStats;
 
-    private BattleUnit zaav;
-    private BattleUnit anthra;
-    
+    public BattleUnit PartyMember;
 
     private void Start() 
     {
-        groupStats = GetComponentInChildren<TextMeshProUGUI>();    
-        zaav = GameObject.FindWithTag("Player").GetComponent<BattleUnit>();
-        anthra = GameObject.FindWithTag("Anthra").GetComponent<BattleUnit>();  
+        groupStats = GetComponentInChildren<TextMeshProUGUI>();
         gameObject.SetActive(false);
     }
 
     private void OnEnable() 
     {
-        groupStats.text = $"{zaav.UnitName}: HP {zaav.CurrentHP}/{zaav.MaxHP}\n\n{anthra.UnitName}: HP {anthra.CurrentHP}/{anthra.MaxHP}";
+        if(groupStats)
+            groupStats.text = $"{PartyMember.UnitName}: HP {PartyMember.CurrentHP}/{PartyMember.MaxHP}\nAtk: {PartyMember.AtkDamage} Def:{PartyMember.Defense}";
     }
 
 }
