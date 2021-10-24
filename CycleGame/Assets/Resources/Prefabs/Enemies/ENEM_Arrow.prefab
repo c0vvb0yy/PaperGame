@@ -142,7 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: Arrow
+  BaseAtkDamage: 0
+  ModDamage: 0
   AtkDamage: 4
+  BaseDefense: 0
+  ModDefense: 0
   Defense: 0
   MaxHP: 5
   CurrentHP: 5

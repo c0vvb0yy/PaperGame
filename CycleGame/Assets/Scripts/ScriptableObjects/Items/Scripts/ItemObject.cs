@@ -51,10 +51,12 @@ public class Item
             buffs[i].Attribute = item.buffs[i].Attribute;
         }
     }
+
+    
 }
 
 [System.Serializable]
-public class ItemBuff
+public class ItemBuff //: IModifiers
 {
     public Attributes Attribute;
     public int Value;
@@ -63,4 +65,9 @@ public class ItemBuff
     {
         Value = value;
     }
+    
+    /*public void AddValue(ref int v) 
+    {
+        BaseValue += Value;
+    }*/
 }

@@ -151,15 +151,7 @@ public class PlayerMovement : MonoBehaviour
         if(Body.velocity == Vector3.zero)
         {
             animationManager.PlayDefaultAnimation();
-
-
-
-
-
-
-
-
-
+            return;
         }
         else //when theres ANY KIND of movement happening
         {
@@ -168,20 +160,15 @@ public class PlayerMovement : MonoBehaviour
                 if(IsJumping)
                 {
                     animationManager.PlayMovementAnimation(MovementAnimations.FRONTJUMP);
-
                 }
                 else if(IsFalling)
                 {
                     animationManager.PlayMovementAnimation(MovementAnimations.FRONTFALL);
-
                 }
                 else
                 {
                     //animationManager.SetAnimation(FrontWalk);
                     animationManager.PlayMovementAnimation(MovementAnimations.FRONTWALK);
-
-
-
                 }
             }
             else
@@ -189,19 +176,14 @@ public class PlayerMovement : MonoBehaviour
                 if(IsJumping)
                 {
                     animationManager.PlayMovementAnimation(MovementAnimations.BACKJUMP);
-
                 }
                 else if(IsFalling)
                 {
                     animationManager.PlayMovementAnimation(MovementAnimations.BACKFALL);
-
                 }
                 else
                 {
                     animationManager.PlayMovementAnimation(MovementAnimations.BACKWALK);
-
-
-
 
                 }
             }

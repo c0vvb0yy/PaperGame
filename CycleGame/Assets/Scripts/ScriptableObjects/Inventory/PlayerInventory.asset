@@ -12,31 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad88c5eff62e0d344a17d96903167ba9, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  SavePath: /Inventory.Save
+  SavePath: /inventory.Save
   database: {fileID: 11400000, guid: b11b82d08902ebc46801e52d44b527c9, type: 2}
   Container:
     Items:
     - Item:
-        Name: 
-        Id: 0
-        buffs: []
-      ID: -1
-      Amount: 0
+        Name: Bandana
+        Id: 6
+        buffs:
+        - Attribute: 0
+          Value: 3
+        - Attribute: 1
+          Value: 1
+      ID: 6
+      Amount: 2
     - Item:
-        Name: 
-        Id: 0
+        Name: Potion
+        Id: 1
         buffs: []
-      ID: -1
-      Amount: 0
+      ID: 1
+      Amount: 2
     - Item:
-        Name: 
-        Id: 0
+        Name: Bones
+        Id: 5
         buffs: []
-      ID: -1
-      Amount: 0
-    - Item:
-        Name: 
-        Id: 0
-        buffs: []
-      ID: -1
-      Amount: 0
+      ID: 5
+      Amount: 2

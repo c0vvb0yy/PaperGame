@@ -341,15 +341,6 @@ MonoBehaviour:
   WalkedBack: 0
   MoveInput: {x: 0, y: 0}
   IsWalking: 0
-  FrontAnim: {fileID: 11400000, guid: e7f92160e2caed14fbfa0069355aad77, type: 2}
-  FrontWalk: {fileID: 11400000, guid: 50041583c0485784490005764d8bf80c, type: 2}
-  FrontJump: {fileID: 11400000, guid: 1eb730179a852c54d87546452ea82fab, type: 2}
-  FrontFall: {fileID: 11400000, guid: 05ad7be0be5a24e49a283aecc17c9b4e, type: 2}
-  BackAnim: {fileID: 11400000, guid: b9e3ca08d1c21754f87dfd515727654c, type: 2}
-  BackWalk: {fileID: 11400000, guid: 981409e60d3a9d44bb5dea3715e50020, type: 2}
-  BackJump: {fileID: 11400000, guid: a7304bd82d09a7d4db6edfa0d48375d8, type: 2}
-  BackFall: {fileID: 11400000, guid: 0c97c64dbd015a4429a16140e98f1518, type: 2}
-  Animator: {fileID: 4267052143488672817}
 --- !u!65 &4267052144571032550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -418,7 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: Zaavan
+  BaseAtkDamage: 0
+  ModDamage: 0
   AtkDamage: 3
+  BaseDefense: 0
+  ModDefense: 0
   Defense: 0
   MaxHP: 10
   CurrentHP: 10

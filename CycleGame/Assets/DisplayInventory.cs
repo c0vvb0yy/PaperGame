@@ -27,7 +27,7 @@ public class DisplayInventory : MonoBehaviour
     // Update is called once per frame
     void OnEnable() 
     {
-       //CreateSlots();
+       UpdateSlots();
     }
 
     public Vector3 GetPosition(int i) 

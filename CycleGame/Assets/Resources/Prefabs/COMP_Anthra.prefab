@@ -250,7 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitName: Anthrazit
+  BaseAtkDamage: 0
+  ModDamage: 0
   AtkDamage: 2
+  BaseDefense: 0
+  ModDefense: 0
   Defense: 0
   MaxHP: 15
   CurrentHP: 15

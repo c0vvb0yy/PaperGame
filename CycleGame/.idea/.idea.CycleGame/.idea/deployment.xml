@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="debian10">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/Assembly-CSharp.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/BattleStatsUI.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/BattleSystem.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/BattleUnit.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/CompanionManager.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Misc/AnimationWindow.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/PartyManager.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Preserver.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/Animation.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/CustomYarnCommands.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/EnemyBehaviour.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/Flip.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/MeshSprite.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/PlayerInteraction.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/PlayerManager.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/Shaders/UnlitDoubleSided.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/SpeakerPortrait.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/Scripts/SpriteAnimation.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/LiberationSans - OFL.txt" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/LineBreaking Leading Characters.txt" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Bitmap.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Surface.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_Sprite.shader" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro.cginc" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Mobile.cginc" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" web="/" />
+            <mapping local="$PROJECT_DIR$/Assets/TextMesh Pro/Sprites/EmojiOne Attribution.txt" web="/" />
+            <mapping local="$PROJECT_DIR$/CycleGame.sln" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.cinemachine@2.6.3" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.3.9" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.ext.nunit@1.0.6" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@2.0.7" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@2.0.7" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.ide.vscode@1.2.3" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.22" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.1" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.6" web="/" />
+            <mapping local="$PROJECT_DIR$/Library/PackageCache/dev.yarnspinner.unity@e050b45804" web="/" />
+            <mapping local="$PROJECT_DIR$/Packages" web="/" />
+            <mapping local="$PROJECT_DIR$/ProjectSettings" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

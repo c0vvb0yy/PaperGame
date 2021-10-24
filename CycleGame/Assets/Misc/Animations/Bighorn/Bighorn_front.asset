@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf26e94711916d74a8d429624d24d33e, type: 3}
   m_Name: Bighorn_front
   m_EditorClassIdentifier: 
-  KeyFrames: []
+  KeyFrames:
+  - Duration: 0.1
+    Sprite: {fileID: 21300000, guid: bae03ef36532ad644865dd711ac8ea14, type: 3}
